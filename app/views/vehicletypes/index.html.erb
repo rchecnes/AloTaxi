@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Vehicletypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicletypes.each do |vehicletype| %>
+      <tr>
+        <td><%= vehicletype.name %></td>
+        <td><%= vehicletype.description %></td>
+        <td><%= link_to 'Show', vehicletype %></td>
+        <td><%= link_to 'Edit', edit_vehicletype_path(vehicletype) %></td>
+        <td><%= link_to 'Destroy', vehicletype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicletype', new_vehicletype_path %>
