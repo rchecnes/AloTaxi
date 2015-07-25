@@ -1,5 +1,6 @@
 class PaymentTypesController < ApplicationController
   before_action :set_payment_type, only: [:show, :edit, :update, :destroy]
+  layout "administrator"
 
   # GET /payment_types
   # GET /payment_types.json
