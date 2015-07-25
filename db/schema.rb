@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725194000) do
+ActiveRecord::Schema.define(version: 20150725211832) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.boolean  "state",       limit: 1
+    t.text     "reference",   limit: 65535
+    t.integer  "district_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "addresses", ["district_id"], name: "index_addresses_on_district_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -19,6 +30,17 @@ ActiveRecord::Schema.define(version: 20150725194000) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "person_id",  limit: 4
+    t.integer  "address_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "favorites", ["address_id"], name: "index_favorites_on_address_id", using: :btree
+  add_index "favorites", ["person_id"], name: "index_favorites_on_person_id", using: :btree
 
   create_table "payment_types", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -57,6 +79,21 @@ ActiveRecord::Schema.define(version: 20150725194000) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.text     "description",     limit: 65535
+    t.integer  "seats_capacity",  limit: 4
+    t.string   "plate",           limit: 255
+    t.string   "year",            limit: 255
+    t.string   "brand",           limit: 255
+    t.string   "soat",            limit: 255
+    t.integer  "vehicle_type_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "vehicles", ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
+
   create_table "vehicletypes", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
@@ -64,4 +101,8 @@ ActiveRecord::Schema.define(version: 20150725194000) do
     t.datetime "updated_at",                null: false
   end
 
+  add_foreign_key "addresses", "districts"
+  add_foreign_key "favorites", "addresses"
+  add_foreign_key "favorites", "people"
+  add_foreign_key "vehicles", "vehicle_types"
 end

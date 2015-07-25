@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
   
 
+<<<<<<< HEAD
+  resources :services
+  resources :rates
+=======
+  resources :favorites
+  resources :addresses
+>>>>>>> 4ff88d92d2e570e7e3459ee025c44950a95e55aa
+  resources :vehicles
   resources :people
-  resources :vehicletypes
 
   resources :roles
   resources :vehicle_types

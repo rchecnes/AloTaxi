@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Phase:</strong>
+  <%= @service.phase %>
+</p>
+
+<p>
+  <strong>Reserved at:</strong>
+  <%= @service.reserved_at %>
+</p>
+
+<p>
+  <strong>Confirmed at datetime:</strong>
+  <%= @service.confirmed_at_datetime %>
+</p>
+
+<p>
+  <strong>Cancelled at:</strong>
+  <%= @service.cancelled_at %>
+</p>
+
+<p>
+  <strong>Scheduled to:</strong>
+  <%= @service.scheduled_to %>
+</p>
+
+<p>
+  <strong>Requested to:</strong>
+  <%= @service.requested_to %>
+</p>
+
+<p>
+  <strong>Started at:</strong>
+  <%= @service.started_at %>
+</p>
+
+<p>
+  <strong>Ended at:</strong>
+  <%= @service.ended_at %>
+</p>
+
+<p>
+  <strong>Price double:</strong>
+  <%= @service.price_double %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @service.person %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @service.person %>
+</p>
+
+<p>
+  <strong>Payment type:</strong>
+  <%= @service.payment_type %>
+</p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @service.vehicle %>
+</p>
+
+<p>
+  <strong>Service type:</strong>
+  <%= @service.service_type %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @service.address %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @service.address %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
