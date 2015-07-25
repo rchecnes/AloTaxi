@@ -1,6 +1,6 @@
 class VehicleTypesController < ApplicationController
   before_action :set_vehicle_type, only: [:show, :edit, :update, :destroy]
-
+  layout "administrator"
   # GET /vehicle_types
   # GET /vehicle_types.json
   def index
