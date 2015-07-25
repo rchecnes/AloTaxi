@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :favorites
   resources :addresses
   resources :vehicles
   resources :people

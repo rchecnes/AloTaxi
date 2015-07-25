@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725210741) do
+ActiveRecord::Schema.define(version: 20150725211832) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20150725210741) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "person_id",  limit: 4
+    t.integer  "address_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "favorites", ["address_id"], name: "index_favorites_on_address_id", using: :btree
+  add_index "favorites", ["person_id"], name: "index_favorites_on_person_id", using: :btree
 
   create_table "payment_types", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -91,5 +102,7 @@ ActiveRecord::Schema.define(version: 20150725210741) do
   end
 
   add_foreign_key "addresses", "districts"
+  add_foreign_key "favorites", "addresses"
+  add_foreign_key "favorites", "people"
   add_foreign_key "vehicles", "vehicle_types"
 end
