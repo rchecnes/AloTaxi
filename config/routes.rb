@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
 
+  resources :vehicles
   resources :people
-  resources :vehicletypes
 
   resources :roles
   resources :vehicle_types

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vehicle.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vehicle.description %>
+</p>
+
+<p>
+  <strong>Seats capacity:</strong>
+  <%= @vehicle.seats_capacity %>
+</p>
+
+<p>
+  <strong>Plate:</strong>
+  <%= @vehicle.plate %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @vehicle.year %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @vehicle.brand %>
+</p>
+
+<p>
+  <strong>Soat:</strong>
+  <%= @vehicle.soat %>
+</p>
+
+<p>
+  <strong>Vehicle type:</strong>
+  <%= @vehicle.vehicle_type %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>
