@@ -129,6 +129,13 @@ ActiveRecord::Schema.define(version: 20150725212222) do
 
   add_index "vehicles", ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
 
+  create_table "vehicletypes", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   add_foreign_key "addresses", "districts"
   add_foreign_key "favorites", "addresses"
   add_foreign_key "favorites", "people"
