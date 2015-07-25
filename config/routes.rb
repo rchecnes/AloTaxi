@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :rates
   resources :favorites
   resources :addresses
+  
   resources :vehicles
   resources :people
 

@@ -9,7 +9,7 @@ class CreateServices < ActiveRecord::Migration
       t.datetime :requested_to
       t.datetime :started_at
       t.datetime :ended_at
-      t.string :price_double
+      t.float :price
       t.references :person, index: true, foreign_key: true
       t.references :person, index: true, foreign_key: true
       t.references :payment_type, index: true, foreign_key: true
