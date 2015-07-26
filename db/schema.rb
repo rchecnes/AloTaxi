@@ -83,22 +83,22 @@ ActiveRecord::Schema.define(version: 20150725212222) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string   "phase",                 limit: 255
+    t.string   "phase",           limit: 255
     t.datetime "reserved_at"
-    t.string   "confirmed_at_datetime", limit: 255
+    t.datetime "confirmed_at"
     t.datetime "cancelled_at"
     t.datetime "scheduled_to"
     t.datetime "requested_to"
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.float    "price",                 limit: 24
-    t.integer  "person_id",             limit: 4
-    t.integer  "payment_type_id",       limit: 4
-    t.integer  "vehicle_id",            limit: 4
-    t.integer  "service_type_id",       limit: 4
-    t.integer  "address_id",            limit: 4
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.float    "price",           limit: 24
+    t.integer  "person_id",       limit: 4
+    t.integer  "payment_type_id", limit: 4
+    t.integer  "vehicle_id",      limit: 4
+    t.integer  "service_type_id", limit: 4
+    t.integer  "address_id",      limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "services", ["address_id"], name: "index_services_on_address_id", using: :btree
