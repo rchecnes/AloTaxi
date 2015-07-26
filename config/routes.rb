@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'service_customers/index'
+
   get 'service_drivers/index'
 
   get 'service_custommers/index'
