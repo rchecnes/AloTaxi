@@ -4,6 +4,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
+    @title = "Listado de Servicios"
     @services = Service.all
   end
 
@@ -14,11 +15,13 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
+    @title = "Nuevo servicio"
     @service = Service.new
   end
 
   # GET /services/1/edit
   def edit
+    @title = "Editar servicio"
   end
 
   # POST /services
