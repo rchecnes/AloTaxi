@@ -1,84 +1,45 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Service -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Phase:</strong>
-  <%= @service.phase %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:phase) %>:</strong></dt>
+  <dd><%= @service.phase %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reserved_at) %>:</strong></dt>
+  <dd><%= @service.reserved_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cancelled_at) %>:</strong></dt>
+  <dd><%= @service.cancelled_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:scheduled_to) %>:</strong></dt>
+  <dd><%= @service.scheduled_to %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:requested_to) %>:</strong></dt>
+  <dd><%= @service.requested_to %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:started_at) %>:</strong></dt>
+  <dd><%= @service.started_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ended_at) %>:</strong></dt>
+  <dd><%= @service.ended_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dd><%= @service.price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:person_id) %>:</strong></dt>
+  <dd><%= @service.person_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:payment_type_id) %>:</strong></dt>
+  <dd><%= @service.payment_type_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:vehicle_id) %>:</strong></dt>
+  <dd><%= @service.vehicle_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:service_type_id) %>:</strong></dt>
+  <dd><%= @service.service_type_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address_id) %>:</strong></dt>
+  <dd><%= @service.address_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:confirmed_at) %>:</strong></dt>
+  <dd><%= @service.confirmed_at %></dd>
+</dl>
 
-<p>
-  <strong>Reserved at:</strong>
-  <%= @service.reserved_at %>
-</p>
-
-<p>
-  <strong>Confirmed at datetime:</strong>
-  <%= @service.confirmed_at_datetime %>
-</p>
-
-<p>
-  <strong>Cancelled at:</strong>
-  <%= @service.cancelled_at %>
-</p>
-
-<p>
-  <strong>Scheduled to:</strong>
-  <%= @service.scheduled_to %>
-</p>
-
-<p>
-  <strong>Requested to:</strong>
-  <%= @service.requested_to %>
-</p>
-
-<p>
-  <strong>Started at:</strong>
-  <%= @service.started_at %>
-</p>
-
-<p>
-  <strong>Ended at:</strong>
-  <%= @service.ended_at %>
-</p>
-
-<p>
-  <strong>Price double:</strong>
-  <%= @service.price_double %>
-</p>
-
-<p>
-  <strong>Person:</strong>
-  <%= @service.person %>
-</p>
-
-<p>
-  <strong>Person:</strong>
-  <%= @service.person %>
-</p>
-
-<p>
-  <strong>Payment type:</strong>
-  <%= @service.payment_type %>
-</p>
-
-<p>
-  <strong>Vehicle:</strong>
-  <%= @service.vehicle %>
-</p>
-
-<p>
-  <strong>Service type:</strong>
-  <%= @service.service_type %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @service.address %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @service.address %>
-</p>
-
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              services_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_service_path(@service), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              service_path(@service),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

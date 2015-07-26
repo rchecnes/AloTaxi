@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :set_favorite, only: [:show, :edit, :update, :destroy]
-
+  layout "administrator"
   # GET /favorites
   # GET /favorites.json
   def index

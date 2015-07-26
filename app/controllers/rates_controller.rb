@@ -1,6 +1,6 @@
 class RatesController < ApplicationController
   before_action :set_rate, only: [:show, :edit, :update, :destroy]
-
+  layout "administrator"
   # GET /rates
   # GET /rates.json
   def index

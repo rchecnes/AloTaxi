@@ -1,13 +1,12 @@
-<%= simple_form_for(@favorite) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @favorite, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@favorite[:name]) %>
+  <%= f.input :person_id %>
+  <%= error_span(@favorite[:person_id]) %>
+  <%= f.input :address_id %>
+  <%= error_span(@favorite[:address_id]) %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.association :person %>
-    <%= f.association :address %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                favorites_path, :class => 'btn btn-default' %>
 <% end %>

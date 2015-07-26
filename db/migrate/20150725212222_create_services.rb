@@ -3,7 +3,7 @@ class CreateServices < ActiveRecord::Migration
     create_table :services do |t|
       t.string :phase
       t.datetime :reserved_at
-      t.datetime :confirmed_at
+      t.string :confirmed_at_datetime
       t.datetime :cancelled_at
       t.datetime :scheduled_to
       t.datetime :requested_to
