@@ -113,7 +113,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+            <a href="index.html" class="logo"><b>INGENIO WEB</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -262,51 +262,70 @@
             </div>
         </header>
       <!--header end-->
+    
+      <!--MAIN SIDEBAR MENU-->
       
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="" class="img-circle" width="60"></a></p>
+              	  <p class="centered">
+              	     <a href="profile.html">
+              	      <%= image_tag "logo_1.png", class: "img-circle"%>
+              	     </a>
+              	 </p>
               	  <h5 class="centered">TaxiOnLine</h5>
-              	  	
-                  <li class="mt">
-                      <%= link_to "Tipo de pago", payment_types_path, class: :""  %>
+              	  
+                  <li class="sub-menu">
+                      <%= link_to(payment_types_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Tipo de pago</span>
+                      <% end %>
                   </li>
-
-                  <li class="mt">
-                      <%= link_to "Tipo de servicio", service_types_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(service_types_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Tipo de servicio</span>
+                      <% end %>
                   </li>
-                  
-                  <li class="mt">
-                      <%= link_to "Distritos", districts_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(districts_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Distritos</span>
+                      <% end %>
                   </li>
-                  
-                  <li class="mt">
-                      <%= link_to "Direcciones", addresses_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(addresses_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Direcciones</span>
+                      <% end %>
                   </li>
-                   <li class="mt">
-                      <%= link_to "Favoritos", favorites_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(favorites_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Favoritos</span>
+                      <% end %>
                   </li>
-                   <li class="mt">
-                      <%= link_to "Precios", rates_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(rates_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Precios</span>
+                      <% end %>
                   </li>
-                  <li class="mt">
-                      <%= link_to "Roles", roles_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(roles_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Roles</span>
+                      <% end %>
                   </li>
-                  <li class="mt">
-                      <%= link_to "Servicios", services_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(services_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Servicios</span>
+                      <% end %>
                   </li>
-                  <li class="mt">
-                      <%= link_to "Tipo de Vehiculos", vehicle_types_path, class: :""  %>
+                  <li class="sub-menu">
+                      <%= link_to(vehicle_types_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Tipo de Vehiculos</span>
+                      <% end %>
                   </li>
-                  <li class="mt">
-                      <%= link_to "Vehiculos", vehicles_path, class: :""  %>
+                 <li class="sub-menu">
+                      <%= link_to(vehicles_path, :class => '') do %>
+                          <i class="fa fa-dashboard"> </i><span>Vehiculos</span>
+                      <% end %>
                   </li>
               </ul>
               <!-- sidebar menu end-->
