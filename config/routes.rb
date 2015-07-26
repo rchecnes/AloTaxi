@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'service_custommers/index'
 
   resources :services
+  resources :services_drivers
   resources :rates
   resources :favorites
   resources :addresses

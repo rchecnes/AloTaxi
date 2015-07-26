@@ -4,6 +4,7 @@ class DistrictsController < ApplicationController
   # GET /districts
   # GET /districts.json
   def index
+    @title = "Listado de Distritos"
     @districts = District.all
   end
 
