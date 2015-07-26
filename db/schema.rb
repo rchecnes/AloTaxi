@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 20150725232832) do
   create_table "services", force: :cascade do |t|
     t.string   "phase",           limit: 255
     t.datetime "reserved_at"
-    t.datetime "confirmed_at"
     t.datetime "cancelled_at"
     t.datetime "scheduled_to"
     t.datetime "requested_to"
@@ -99,6 +98,7 @@ ActiveRecord::Schema.define(version: 20150725232832) do
     t.integer  "address_id",      limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.datetime "confirmed_at"
   end
 
   add_index "services", ["address_id"], name: "index_services_on_address_id", using: :btree
