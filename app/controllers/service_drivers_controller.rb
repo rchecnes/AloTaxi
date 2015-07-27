@@ -1,17 +1,20 @@
 class ServiceDriversController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
-  layout "administrator"
+  before_action :set_service, only: [:accept]
+ layout "administrator"
   
   
   
   
   def index
-    @chofer =1
+   
     @title = "Servicios por Atender"
-    @services = Service.find(@chofer)
+    @services = Service.find_by(driver_id: '1')
+   
   end
   
-  def Aceptar
+  def accept
+   
+    
        
   end
   
