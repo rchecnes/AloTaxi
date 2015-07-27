@@ -2,23 +2,23 @@
 <div class="page-header">
   
 </div>
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+     <!-- <th><%= model_class.human_attribute_name(:id) %></th>-->
+      <th><%= model_class.human_attribute_name(:Nombre) %></th>
+      <th><%= model_class.human_attribute_name(:Descripción) %></th>
+     <!-- <th><%= model_class.human_attribute_name(:created_at) %></th>-->
+      <th><%=t '.actions', :default => t("helpers.Acciones") %></th>
     </tr>
   </thead>
   <tbody>
     <% @districts.each do |district| %>
       <tr>
-        <td><%= link_to district.id, district_path(district) %></td>
+      <!--  <td><%= link_to district.id, district_path(district) %></td>-->
         <td><%= district.name %></td>
         <td><%= district.description %></td>
-        <td><%=l district.created_at %></td>
+       <!-- <td><%=l district.created_at %></td>-->
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_district_path(district), :class => 'btn btn-default btn-xs' %>
