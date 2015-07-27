@@ -2,36 +2,36 @@
 
 one:
   phase: MyString
-  reserved_at: 2015-07-25 21:22:22
-  confirmed_at_datetime: MyString
-  cancelled_at: 2015-07-25 21:22:22
-  scheduled_to: 2015-07-25 21:22:22
-  requested_to: 2015-07-25 21:22:22
-  started_at: 2015-07-25 21:22:22
-  ended_at: 2015-07-25 21:22:22
-  price_double: MyString
-  person_id: 
-  person_id: 
-  payment_type_id: 
+  reserved_at: 2015-07-26 22:54:37
+  confirmed_at: 2015-07-26 22:54:37
+  cancelled_at: 2015-07-26 22:54:37
+  scheduled_to: 2015-07-26 22:54:37
+  requested_seats: 1
+  started_at: 2015-07-26 22:54:37
+  ended_at: 2015-07-26 22:54:37
+  price: 1.5
   vehicle_id: 
   service_type_id: 
+  payment_type_id: 
+  person_id: 
+  person_id: 
   address_id: 
   address_id: 
 
 two:
   phase: MyString
-  reserved_at: 2015-07-25 21:22:22
-  confirmed_at_datetime: MyString
-  cancelled_at: 2015-07-25 21:22:22
-  scheduled_to: 2015-07-25 21:22:22
-  requested_to: 2015-07-25 21:22:22
-  started_at: 2015-07-25 21:22:22
-  ended_at: 2015-07-25 21:22:22
-  price_double: MyString
-  person_id: 
-  person_id: 
-  payment_type_id: 
+  reserved_at: 2015-07-26 22:54:37
+  confirmed_at: 2015-07-26 22:54:37
+  cancelled_at: 2015-07-26 22:54:37
+  scheduled_to: 2015-07-26 22:54:37
+  requested_seats: 1
+  started_at: 2015-07-26 22:54:37
+  ended_at: 2015-07-26 22:54:37
+  price: 1.5
   vehicle_id: 
   service_type_id: 
+  payment_type_id: 
+  person_id: 
+  person_id: 
   address_id: 
   address_id: 
