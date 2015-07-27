@@ -4,7 +4,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @title = "Listado de Servicios"
+    @title = "Listado - Servicio de reserva"
     @services = Service.all
   end
 
@@ -15,13 +15,13 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @title = "Nuevo servicio"
+    @title = "Nuevo - Servicio de reserva"
     @service = Service.new
   end
 
   # GET /services/1/edit
   def edit
-    @title = "Editar servicio"
+    @title = "Editar - Servicio de reserva"
   end
 
   # POST /services
@@ -72,6 +72,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:phase, :reserved_at, :confirmed_at_datetime, :cancelled_at, :scheduled_to, :requested_to, :started_at, :ended_at, :price_double, :person_id, :person_id, :payment_type_id, :vehicle_id, :service_type_id, :address_id, :address_id)
+      params.require(:service).permit(:phase, :reserved_at, :confirmed_at, :cancelled_at, :scheduled_to, :requested_seats, :started_at, :ended_at, :price, :vehicle_id, :service_type_id, :payment_type_id, :person_id, :person_id, :address_id, :address_id)
     end
 end

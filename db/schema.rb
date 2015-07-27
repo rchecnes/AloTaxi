@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150725232832) do
     t.datetime "updated_at",                null: false
   end
 
+
   create_table "services", force: :cascade do |t|
     t.string   "phase",           limit: 255
     t.datetime "reserved_at"
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150725232832) do
   add_index "services", ["person_id"], name: "index_services_on_person_id", using: :btree
   add_index "services", ["service_type_id"], name: "index_services_on_service_type_id", using: :btree
   add_index "services", ["vehicle_id"], name: "index_services_on_vehicle_id", using: :btree
+
 
   create_table "vehicle_types", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -140,10 +142,5 @@ ActiveRecord::Schema.define(version: 20150725232832) do
   add_foreign_key "favorites", "addresses"
   add_foreign_key "favorites", "people"
   add_foreign_key "rates", "districts"
-  add_foreign_key "services", "addresses"
-  add_foreign_key "services", "payment_types"
-  add_foreign_key "services", "people"
-  add_foreign_key "services", "service_types"
-  add_foreign_key "services", "vehicles"
   add_foreign_key "vehicles", "vehicle_types"
 end
