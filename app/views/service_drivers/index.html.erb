@@ -1,6 +1,10 @@
 
+ <%= link_to t('Aceptar', :default => t("helpers.links.edit"))%>
 
 <%- model_class = Service -%>
+
+
+
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -20,9 +24,9 @@
         <td><%= service.address_id %></td>
         <td><%= service.service_type_id %></td>
         <td><%= service.address_id %></td>
+        <td><input name="cboption" type="checkbox" /></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_service_path(service), :class => 'btn btn-default btn-xs' %>
+         
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       service_path(service),
                       :method => :delete,
