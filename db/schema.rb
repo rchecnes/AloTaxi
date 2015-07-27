@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150725232832) do
   end
 
 
+
   create_table "services", force: :cascade do |t|
     t.string   "phase",           limit: 255
     t.datetime "reserved_at"
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150725232832) do
   add_index "services", ["person_id"], name: "index_services_on_person_id", using: :btree
   add_index "services", ["service_type_id"], name: "index_services_on_service_type_id", using: :btree
   add_index "services", ["vehicle_id"], name: "index_services_on_vehicle_id", using: :btree
+
 
 
   create_table "vehicle_types", force: :cascade do |t|
