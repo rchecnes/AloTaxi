@@ -82,8 +82,6 @@ ActiveRecord::Schema.define(version: 20150725232832) do
     t.datetime "updated_at",                null: false
   end
 
-
-
   create_table "services", force: :cascade do |t|
     t.string   "phase",           limit: 255
     t.datetime "reserved_at"

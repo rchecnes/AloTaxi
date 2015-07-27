@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :service_types
   resources :payment_types
   resources :districts
+   resources :services
+  
 
   get 'home/index'
   
