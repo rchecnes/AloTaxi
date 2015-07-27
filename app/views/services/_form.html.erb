@@ -1,70 +1,56 @@
 <%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
-
-<div class="row">
-    <div class="col-md-4">
-      <%= f.input :phase %>
-      <%= error_span(@service[:phase]) %>
-    </div>
-    <div class="col-md-4">
-      <%= f.input :price %>
-      <%= error_span(@service[:price]) %>
-    </div>
-    <div class="col-md-4">
-      <%= f.input :address_id %>
-      <%= error_span(@service[:address_id]) %>
-    </div>
-    <!--<div class="col-md-4">
-      <%= f.input :reserved_at %>
-      <%= error_span(@service[:reserved_at]) %>
-    </div>
-    <div class="col-md-4">
-      <%= f.input :cancelled_at %>
-      <%= error_span(@service[:cancelled_at]) %>
-    </div>-->
-</div>
-<div class="row">
-    <div class="col-md-4">
-      <%= f.input :person_id %>
-      <%= error_span(@service[:person_id]) %>
-    </div>
-    <div class="col-md-4">
-      <%= f.input :payment_type_id %>
-      <%= error_span(@service[:payment_type_id]) %>
-    </div>
-    <div class="col-md-4">
-     <%= f.input :vehicle_id %>
-    <%= error_span(@service[:vehicle_id]) %>
-    </div>
-    <!--<div class="col-md-4">
-      <%= f.input :reserved_at %>
-      <%= error_span(@service[:reserved_at]) %>
-    </div>
-    <div class="col-md-4">
-      <%= f.input :cancelled_at %>
-      <%= error_span(@service[:cancelled_at]) %>
-    </div>-->
-</div>
   
-  
-  <%= f.input :scheduled_to %>
-  <%= error_span(@service[:scheduled_to]) %>
-  <%= f.input :requested_to %>
-  <%= error_span(@service[:requested_to]) %>
-  <%= f.input :started_at %>
-  <%= error_span(@service[:started_at]) %>
-  <%= f.input :ended_at %>
-  <%= error_span(@service[:ended_at]) %>
-  
-  
-  
-  
-  <%= f.input :service_type_id %>
-  <%= error_span(@service[:service_type_id]) %>
-  
-  <%= f.input :confirmed_at %>
-  <%= error_span(@service[:confirmed_at]) %>
-
+  <div class="row">
+      <div class="col-md-4">
+        <div class="form-group right-space">
+          <label for="">Fecha se servicio</label>
+          <%= f.text_field :reserved_at, class: "form-control datepicker", 'data-provide': 'datepicker' %>
+          <%= error_span(@service[:reserved_at]) %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group right-space">
+          <label for="">Nro. Pasajeros</label>
+          <%= f.text_field :requested_seats, class: "form-control" %>
+          <%= error_span(@service[:requested_seats]) %>
+        </div>
+      </div>
+      <div class="col-md-4">
+          <%= f.association :vehicle, class: "form-control" %>
+          <%= error_span(@service[:vehicle]) %>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4">
+        <%= f.association :payment_type %>
+        <%= error_span(@service[:payment_type]) %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :price %>
+        <%= error_span(@service[:price]) %>
+      </div>
+      <div class="col-md-4">
+        <%= f.association :service_type %>
+        <%= error_span(@service[:service_type]) %>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4">
+        <%= f.input :to_address_id %>
+        <%= error_span(@service[:to_address_id]) %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :from_address_id %>
+        <%= error_span(@service[:from_address_id]) %>
+      </div>
+  </div>
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 services_path, :class => 'btn btn-default' %>
 <% end %>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+});
+  
+</script>

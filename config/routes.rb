@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   
+  resources :services
   get 'service_customers/index'
 
   get 'service_drivers/index'
 
   get 'service_custommers/index'
 
-  resources :services
   resources :rates
   resources :favorites
   resources :addresses
