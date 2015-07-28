@@ -9,9 +9,11 @@ class ServiceDriversController < ApplicationController
   
   
   def index
+
     
     @title = "Servicios por Atender"
     @services = Service.all
+
   end
   
   def Aceptar
