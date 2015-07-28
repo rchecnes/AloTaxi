@@ -13,17 +13,6 @@ class CreateServices < ActiveRecord::Migration
       t.references :vehicle, index: true, foreign_key: true
       t.references :service_type, index: true, foreign_key: true
       t.references :payment_type, index: true, foreign_key: true
-      
-      #t.references :person, index: true, foreign_key: true
-      #t.references :person, index: true, foreign_key: true
-      #t.references :address, index: true, foreign_key: true
-      #t.references :address, index: true, foreign_key: true
-      
-      t.integer :customer_id
-      t.integer :driver_id
-      t.integer :to_address_id
-      t.integer :from_address_id
-
       t.timestamps null: false
     end
   end
