@@ -8,7 +8,7 @@ class ServiceDriversController < ApplicationController
   def index
    
     @title = "Servicios por Atender"
-    @services = Service.find_by(driver_id: '1')
+    @services = Service.all
    
   end
   
