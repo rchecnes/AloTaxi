@@ -1,10 +1,10 @@
 <%= simple_form_for @favorite, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= error_span(@favorite[:name]) %>
-  <%= f.input :person_id %>
-  <%= error_span(@favorite[:person_id]) %>
-  <%= f.input :address_id %>
-  <%= error_span(@favorite[:address_id]) %>
+  <%= f.association :person %><!--linea agregada-->
+  <%= error_span(@favorite[:person]) %>
+  <%= f.association :address %><!--linea agregada-->
+  <%= error_span(@favorite[:address]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

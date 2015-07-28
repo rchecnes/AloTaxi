@@ -1,31 +1,29 @@
 class ServiceDriversController < ApplicationController
-  before_action :set_service, only: [:accept]
+  before_action :set_service, only: [:accept, :reject,:start,:terminate]
  layout "administrator"
-  
-  
-  
-  
-  
-  
   
   def index
 
-    
-    @title = "Servicios por Atender"
-    @services = Service.all
+    @chofer=1
+    @title = "Servicios Asignados"
+    @services = Service.where(driver_id:@chofer)
 
   end
   
-  def Aceptar
-   
-    @title = "Servicios por Atender"
-    @services = Service.all
-   
+  def accept
+
+    
   end
   
-  def accept
-   
-       
+  def reject
+  end 
+    
+  def start
   end
+  
+  def terminate
+  end
+
+
   
 end 

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   get "services/list_favorite" => 'services#list_favorite', :as => :list_favorite
 
+
   resources :services_drivers
   resources :rates
   resources :favorites

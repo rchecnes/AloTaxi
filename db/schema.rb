@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20150728020603) do
     t.integer  "to_address_id",   limit: 4
     t.integer  "customer_id",     limit: 4
     t.integer  "driver_id",       limit: 4
+
   end
 
   add_index "services", ["customer_id"], name: "index_services_on_customer_id", using: :btree
