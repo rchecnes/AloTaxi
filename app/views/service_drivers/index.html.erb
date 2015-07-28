@@ -1,5 +1,5 @@
 
- <%= link_to t('Aceptar', :default => t("helpers.links.edit"))%>
+
 
 
 <button type="button" class="btn btn-primary">Aceptar</button>
@@ -30,16 +30,9 @@
         <td><%= service.to_address_id %></td>
         <td><%= service.from_address_id %></td>
         <td><%= service.service_type_id %></td>
-        <td><%= service.address_id %></td>
-        <td><input name="cboption" type="checkbox" /></td>
-        <td>
-         
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      service_path(service),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+      
+       
+      
      
         <td><input name="cboption[]" type="checkbox" /></td>
         
