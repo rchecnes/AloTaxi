@@ -47,8 +47,10 @@ end
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
-
+#datepicker
 gem 'bootstrap-datepicker-rails'
+#bootstrap modal
+gem 'bootstrap-modal-rails'
 #Form management gem set
 gem 'simple_form'
 

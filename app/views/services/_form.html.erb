@@ -64,7 +64,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to(services_path, :class => 'btn btn-info') do %>
+        <%= link_to('#moda_favoritos', :class => 'btn btn-info', :'id' => "agregar_favoritos_origen", :'data-toggle'=>'modal') do %>
             <i class="fa fa-dashboard"> </i><span>Agregar de favorito</span>
         <% end %>
       </div>
@@ -100,22 +100,35 @@
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to(services_path, :class => 'btn btn-info') do %>
+        <%= link_to('#moda_favoritos', :class => 'btn btn-info', :'id' => "agregar_favoritos_origen", :'data-toggle'=>'modal') do %>
             <i class="fa fa-dashboard"> </i><span>Agregar de favorito</span>
         <% end %>
       </div>
     </div>
   </div>
-  
+  <%= link_to 'Add fovorites', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
   
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 services_path, :class => 'btn btn-default' %>
                 
 <% end %>
-<a type="button" class="btn" style="width:100%;" href="#test_modal" data-toggle="modal">Add Image</a>
 
-<div class="modal fade" id="test_modal">
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    **here comes whatever you want to show!**
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+
+<!--<div class="modal fade" id="moda_favoritos">
   <div class="content-modal">
     <div class="modal-header">
       <a class="close" data-dismiss="modal">&times;</a>
@@ -129,14 +142,14 @@
       <input type="button" id="agregar_favorito" class="btn btn-primary" value="agragar">
     </div>
   </div>
-  
-</div>
+</div>-->
+
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#agregar_favorito").click(function(){
+  /*$("#agregar_favorito").click(function(){
     alert("hola");
    $('#test_modal').modal('hide');
-  });
+  });*/
 });
   
 </script>

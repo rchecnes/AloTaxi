@@ -8,6 +8,13 @@ class ServicesController < ApplicationController
     @services = Service.all
     
   end
+  
+  def list_favorite
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   # GET /services/1
   # GET /services/1.json
