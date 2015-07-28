@@ -6,6 +6,7 @@ class ServicesController < ApplicationController
   def index
     @title = "Listado - Servicio de reserva"
     @services = Service.all
+    
   end
 
   # GET /services/1
@@ -17,6 +18,7 @@ class ServicesController < ApplicationController
   def new
     @title = "Nuevo - Servicio de reserva"
     @service = Service.new
+    @districts = District.all
   end
 
   # GET /services/1/edit

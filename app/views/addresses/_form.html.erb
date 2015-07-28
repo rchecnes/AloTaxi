@@ -5,7 +5,7 @@
   <%= error_span(@address[:state]) %>
   <%= f.input :reference %>
   <%= error_span(@address[:reference]) %>
-  <%= f.input :district_id %>
+  <%= f.association :district %><!--linea agregada emr-->
   <%= error_span(@address[:district_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

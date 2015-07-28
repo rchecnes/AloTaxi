@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get 'service_drivers/index'
 
-  resources :services
   resources :services_drivers
   resources :rates
   resources :favorites
@@ -18,6 +17,8 @@ Rails.application.routes.draw do
   resources :service_types
   resources :payment_types
   resources :districts
+   resources :services
+  
 
   get 'home/index'
   
