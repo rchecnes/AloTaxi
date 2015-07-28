@@ -4,6 +4,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
+    @title="Listado de Personas"
     @people = Person.all
   end
 
@@ -14,11 +15,13 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
+    @title="Nueva Persona"
     @person = Person.new
   end
 
   # GET /people/1/edit
   def edit
+    @title="Editar Personas"
   end
 
   # POST /people
