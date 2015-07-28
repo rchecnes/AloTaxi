@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'service_drivers/index'
 
+
   resources :services_drivers
   resources :rates
   resources :favorites
