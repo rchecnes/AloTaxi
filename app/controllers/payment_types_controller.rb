@@ -5,6 +5,7 @@ class PaymentTypesController < ApplicationController
   # GET /payment_types
   # GET /payment_types.json
   def index
+    @title="Lista de pagos"
     @payment_types = PaymentType.all
   end
 
@@ -15,11 +16,13 @@ class PaymentTypesController < ApplicationController
 
   # GET /payment_types/new
   def new
+    @title="Nuevo Pago"
     @payment_type = PaymentType.new
   end
 
   # GET /payment_types/1/edit
   def edit
+    @title="Editar Pago"
   end
 
   # POST /payment_types
