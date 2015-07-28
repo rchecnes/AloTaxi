@@ -10,10 +10,11 @@ class ServicesController < ApplicationController
   end
   
   def list_favorite
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    #respond_to do |format|
+    #  format.html
+    #  format.js
+    #end
+    @favorites = Favorite.all
   end
 
   # GET /services/1
