@@ -35,23 +35,110 @@
       </div>
   </div>
   <div class="row">
-      <div class="col-md-4">
-        <%= f.input :to_address_id %>
-        <%= error_span(@service[:to_address_id]) %>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Dirección desde</label>
+        <input class="form-control" type="text" name="direccion_origen" id="direccion_origen">
       </div>
-      <div class="col-md-4">
-        <%= f.input :from_address_id %>
-        <%= error_span(@service[:from_address_id]) %>
+    </div>
+    <!--<div class="col-md-4">
+      <%= f.input :to_address_id %>
+      <%= error_span(@service[:to_address_id]) %>
+    </div>-->
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Distrito origen</label>
+        <select class="form-control" id="distrito_origen" name="distrito_origen">
+          <% @districts.each do |distric| %>
+            <option><%= distric.name %></optio>
+          <% end %>
+        </select>
       </div>
-      <input type="text">
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Referencia</label>
+        <input class="form-control" type="text" name="referencia_origen" id="referencia_origen">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>&nbsp;</label><br>
+        <%= link_to(services_path, :class => 'btn btn-info') do %>
+            <i class="fa fa-dashboard"> </i><span>Agregar de favorito</span>
+        <% end %>
+      </div>
+    </div>
   </div>
+  <div class="row">
+   <!--<div class="col-md-4">
+      <%= f.input :from_address_id %>
+      <%= error_span(@service[:from_address_id]) %>
+    </div>-->
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Dirección hasta</label>
+        <input class="form-control" type="text" name="direccion_hasta" id="direccion_destino">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Distrito origen</label>
+        <select class="form-control" id="distrito_destino" name="distrito_destino">
+          <% @districts.each do |distric| %>
+            <option><%= distric.name %></optio>
+          <% end %>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Referencia</label>
+        <input class="form-control" type="text" name="referencia_destino" id="referencia_destino">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>&nbsp;</label><br>
+        <%= link_to(services_path, :class => 'btn btn-info') do %>
+            <i class="fa fa-dashboard"> </i><span>Agregar de favorito</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 services_path, :class => 'btn btn-default' %>
+                
 <% end %>
+<a type="button" class="btn" style="width:100%;" href="#test_modal" data-toggle="modal">Add Image</a>
+
+<div class="modal fade" id="test_modal">
+  <div class="content-modal">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&times;</a>
+      <h3>Mis favoritos</h3>
+    </div>
+    <div class="modal-body">
+      <p>Test Modal</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Close</a>
+      <input type="button" id="agregar_favorito" class="btn btn-primary" value="agragar">
+    </div>
+  </div>
+  
+</div>
 <script type="text/javascript">
 $(document).ready(function(){
-  
+  $("#agregar_favorito").click(function(){
+    alert("hola");
+   $('#test_modal').modal('hide');
+  });
 });
   
 </script>
+
+
