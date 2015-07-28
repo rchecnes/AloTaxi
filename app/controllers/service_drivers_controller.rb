@@ -9,9 +9,9 @@ class ServiceDriversController < ApplicationController
   
   
   def index
-    @chofer =1
+    
     @title = "Servicios por Atender"
-    @services = Service.find(@chofer)
+    @services = Service.all
   end
   
   def Aceptar
