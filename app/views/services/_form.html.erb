@@ -3,17 +3,14 @@
   <div class="row">
       <div class="col-md-4">
         <div class="form-group right-space">
-                <label for="">Fecha de servicio</label>
-          <%= f.text_field :reserved_at, class: "form-control datepicker", 'data-provide': 'datepicker' %>
+          <label for="">Reserved at</label>
+          <%= f.input_field  :reserved_at, as: :string, class: "form-control datepicker", 'data-provide': 'datepicker' %>
           <%= error_span(@service[:reserved_at]) %>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="form-group right-space">
-          <label for="">Nro. Pasajeros</label>
-          <%= f.text_field :requested_seats, class: "form-control" %>
+          <%= f.input :requested_seats, class: "form-control" %>
           <%= error_span(@service[:requested_seats]) %>
-        </div>
       </div>
       <div class="col-md-4">
           <%= f.association :vehicle, class: "form-control" %>
@@ -35,20 +32,18 @@
       </div>
   </div>
   <div class="row">
+    <%= f.input :from_address_id, :as => :hidden %>
+    <%= error_span(@service[:from_address_id]) %>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Dirección desde</label>
-        <input class="form-control" type="text" name="direccion_origen" id="direccion_origen">
+        <label for="">From address</label>
+        <input class="form-control" type="text" name="from_address_two" id="from_address_two">
       </div>
     </div>
-    <!--<div class="col-md-4">
-      <%= f.input :to_address_id %>
-      <%= error_span(@service[:to_address_id]) %>
-    </div>-->
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Distrito origen</label>
-        <select class="form-control" id="distrito_origen" name="distrito_origen">
+        <label for="">From district</label>
+        <select class="form-control" id="from_district_two" name="from_district_two">
           <% @districts.each do |distric| %>
             <option><%= distric.name %></optio>
           <% end %>
@@ -57,31 +52,29 @@
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Referencia</label>
-        <input class="form-control" type="text" name="referencia_origen" id="referencia_origen">
+        <label for="">From reference</label>
+        <input class="form-control" type="text" name="from_reference" id="from_reference">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to 'Agregar de favorito', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
+        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
       </div>
     </div>
   </div>
   <div class="row">
-   <!--<div class="col-md-4">
-      <%= f.input :from_address_id %>
-      <%= error_span(@service[:from_address_id]) %>
-    </div>-->
+      <%= f.input :to_address_id, :as => :hidden %>
+      <%= error_span(@service[:to_address_id]) %>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Dirección hasta</label>
-        <input class="form-control" type="text" name="direccion_hasta" id="direccion_destino">
+        <label for="">To address</label>
+        <input class="form-control" type="text" name="to_address_two" id="to_address_two">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Distrito origen</label>
+        <label for="">To district</label>
         <select class="form-control" id="distrito_destino" name="distrito_destino">
           <% @districts.each do |distric| %>
             <option><%= distric.name %></optio>
@@ -91,14 +84,14 @@
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Referencia</label>
-        <input class="form-control" type="text" name="referencia_destino" id="referencia_destino">
+        <label for="">To reference</label>
+        <input class="form-control" type="text" name="to_reference_two" id="to_reference_two">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to 'Agregar de favorito', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
+        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
       </div>
     </div>
   </div>
@@ -118,17 +111,19 @@
     **here comes whatever you want to show!**
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
+    <!--<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>-->
   </div>
 </div>
 
 <script type="text/javascript">
 $(document).ready(function(){
-  /*$("#agregar_favorito").click(function(){
+  
+  $("#add_one").click(function(){
     alert("hola");
-   $('#test_modal').modal('hide');
-  });*/
+  })
+    
+ 
 });
   
 </script>

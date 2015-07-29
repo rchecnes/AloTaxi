@@ -3,6 +3,7 @@
     <tr>
       <th>Nombre</th>
       <th>Dirección</th>
+      <th>Distrito</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -10,9 +11,24 @@
     <% @favorites.each do |favorite| %>
       <tr>
         <td><%= favorite.name %></td>
-        <td><%= favorite.name %></td>
-        <td><%= favorite.name %></td>
+        <td><%= favorite.address.name %></td>
+        <td><%= favorite.address.district.name %></td>
+        <td>
+            <%= link_to 'Add', '#',  { 'class' => 'btn btn-info', 'id'=>'add_one'}  %> 
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+  $("#add_one").click(function(){
+    $('#direccion_origen').val("las americas 3");
+    
+  })
+    
+ 
+});
+  
+</script>

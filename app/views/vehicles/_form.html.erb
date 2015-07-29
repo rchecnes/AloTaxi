@@ -13,8 +13,8 @@
   <%= error_span(@vehicle[:brand]) %>
   <%= f.input :soat %>
   <%= error_span(@vehicle[:soat]) %>
-  <%= f.input :vehicle_type_id %>
-  <%= error_span(@vehicle[:vehicle_type_id]) %>
+  <%= f.association :vehicle_type %>
+  <%= error_span(@vehicle[:vehicle_type]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
