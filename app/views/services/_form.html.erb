@@ -32,8 +32,10 @@
       </div>
   </div>
   <div class="row">
-    <%= f.input :from_address_id, :as => :hidden %>
-    <%= error_span(@service[:from_address_id]) %>
+    <div class='hidden'>
+      <%= f.association :from_address %>
+      <%= error_span(@service[:from_address]) %>
+    </div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="">From address</label>
@@ -45,7 +47,7 @@
         <label for="">From district</label>
         <select class="form-control" id="from_district_two" name="from_district_two">
           <% @districts.each do |distric| %>
-            <option><%= distric.name %></optio>
+            <option value="<%=distric.id%>"><%= distric.name %></optio>
           <% end %>
         </select>
       </div>
@@ -53,7 +55,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label for="">From reference</label>
-        <input class="form-control" type="text" name="from_reference" id="from_reference">
+        <input class="form-control" type="text" name="from_reference_two" id="from_reference_two">
       </div>
     </div>
     <div class="col-md-3">
@@ -64,8 +66,10 @@
     </div>
   </div>
   <div class="row">
-      <%= f.input :to_address_id, :as => :hidden %>
-      <%= error_span(@service[:to_address_id]) %>
+    <div class='hidden'>
+      <%= f.input :to_address %>
+      <%= error_span(@service[:to_address]) %>
+    </div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="">To address</label>
@@ -75,9 +79,9 @@
     <div class="col-md-3">
       <div class="form-group">
         <label for="">To district</label>
-        <select class="form-control" id="distrito_destino" name="distrito_destino">
+        <select class="form-control" id="to_district_two" name="to_district_two">
           <% @districts.each do |distric| %>
-            <option><%= distric.name %></optio>
+            <option value="<%=distric.id%>"><%= distric.name %></optio>
           <% end %>
         </select>
       </div>

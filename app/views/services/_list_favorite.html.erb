@@ -1,10 +1,11 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Dirección</th>
-      <th>Distrito</th>
-      <th>Acciones</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Reference</th>
+      <th>District</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -12,9 +13,11 @@
       <tr>
         <td><%= favorite.name %></td>
         <td><%= favorite.address.name %></td>
+        <td><%= favorite.address.reference %></td>
         <td><%= favorite.address.district.name %></td>
         <td>
-            <%= link_to 'Add', '#',  { 'class' => 'btn btn-info', 'id'=>'add_one'}  %> 
+            <% address_string = favorite.address.id.to_s+'-'+favorite.address.name+'-'+favorite.address.district.id.to_s+'-'+favorite.address.reference %>
+            <%= link_to 'Add', '#',  { 'class' => 'btn btn-info add_favorite_to_service', 'data'=>address_string}  %>
         </td>
       </tr>
     <% end %>
@@ -23,8 +26,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
   
-  $("#add_one").click(function(){
-    $('#direccion_origen').val("las americas 3");
+  $(".add_favorite_to_service").click(function(){
+    
+    var address_tring = $(this).attr('data').split('-');
+    
+    $("#service_from_address").val(address_tring[0]);
+    $("#from_address_two").val(address_tring[1]);
+    $("#from_district_two").val(address_tring[2]);
+    $("#from_reference_two").val(address_tring[3]);
+    
+    $(".close").click();
     
   })
     

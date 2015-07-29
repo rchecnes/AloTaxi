@@ -2252,7 +2252,10 @@ label {
     background-color: #E7E7E4;
     margin:50px;
     /*width: 80%;*/
-    
+}
+
+.hidden{
+    display:none;
 }
 
 
