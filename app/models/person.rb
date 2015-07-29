@@ -1,6 +1,5 @@
 class Person < ActiveRecord::Base
 
-
     has_many :favorites
     
     has_many :customer_services ,  :foreign_key  =>  "customer_id" ,  :class_name  =>  "Service" 
