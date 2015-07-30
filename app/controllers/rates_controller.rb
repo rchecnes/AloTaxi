@@ -4,7 +4,7 @@ class RatesController < ApplicationController
   # GET /rates
   # GET /rates.json
   def index
-    @title="Listado de Tarifas"
+    @title="List of Rates"
     @rates = Rate.all
   end
 
@@ -15,13 +15,13 @@ class RatesController < ApplicationController
 
   # GET /rates/new
   def new
-    @title="Nueva Tarifa"
+    @title="New Rate"
     @rate = Rate.new
   end
 
   # GET /rates/1/edit
   def edit
-    @title="Editar Tarifa"
+    @title="Edit Rate"
   end
 
   # POST /rates

@@ -4,6 +4,7 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.json
   def index
+    @title="List of Roles"
     @roles = Role.all
   end
 
@@ -14,11 +15,13 @@ class RolesController < ApplicationController
 
   # GET /roles/new
   def new
+     @title="New Role"
     @role = Role.new
   end
 
   # GET /roles/1/edit
   def edit
+      @title="Edit Role"
   end
 
   # POST /roles

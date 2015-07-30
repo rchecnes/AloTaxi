@@ -4,7 +4,7 @@ class DistrictsController < ApplicationController
   # GET /districts
   # GET /districts.json
   def index
-    @title = "Listado de Distritos"
+    @title = "List of districts"
     @districts = District.all
   end
 
@@ -15,13 +15,13 @@ class DistrictsController < ApplicationController
 
   # GET /districts/new
   def new
-    @title="Nuevo Distrito"
+    @title="New District"
     @district = District.new
   end
 
   # GET /districts/1/edit
   def edit
-    @title="Editar Distrito"
+    @title="Edit District"
   end
 
   # POST /districts
