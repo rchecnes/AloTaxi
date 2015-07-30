@@ -1,1 +1,1 @@
-$("#modal-window").html("<%= escape_javascript(render 'services/list_favorite') %>");
+$("#modal_content").html("<%= escape_javascript(render 'services/list_favorite') %>");

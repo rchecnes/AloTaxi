@@ -3,21 +3,18 @@
   <div class="row">
       <div class="col-md-4">
         <div class="form-group right-space">
-                <label for="">Fecha de servicio</label>
-          <%= f.text_field :reserved_at, class: "form-control datepicker", 'data-provide': 'datepicker' %>
+          <label for="">Reserved at</label>
+          <%= f.input_field  :reserved_at, as: :string, class: "form-control datepicker", 'data-provide': 'datepicker' %>
           <%= error_span(@service[:reserved_at]) %>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="form-group right-space">
-          <label for="">Nro. Pasajeros</label>
-          <%= f.text_field :requested_seats, class: "form-control" %>
+          <%= f.input :requested_seats, class: "form-control" %>
           <%= error_span(@service[:requested_seats]) %>
-        </div>
       </div>
       <div class="col-md-4">
-          <%= f.association :vehicle, class: "form-control" %>
-          <%= error_span(@service[:vehicle]) %>
+          <%= f.association :vehicle_type, class: "form-control" %>
+          <%= error_span(@service[:vehicle_type]) %>
       </div>
   </div>
   <div class="row">
@@ -35,77 +32,70 @@
       </div>
   </div>
   <div class="row">
+    <div class='hidden'>
+     <input class="form-control" type="text" name="from_address_two_id" id="from_address_two_id">
+    </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Dirección desde</label>
-        <input class="form-control" type="text" name="direccion_origen" id="direccion_origen">
+        <label for="">From address</label>
+        <input class="form-control" type="text" name="from_address_two" id="from_address_two">
       </div>
     </div>
-    <!--<div class="col-md-4">
-      <%= f.input :to_address_id %>
-      <%= error_span(@service[:to_address_id]) %>
-    </div>-->
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Distrito origen</label>
-        <select class="form-control" id="distrito_origen" name="distrito_origen">
+        <label for="">From district</label>
+        <select class="form-control" id="from_district_two" name="from_district_two">
           <% @districts.each do |distric| %>
-            <option><%= distric.name %></optio>
+            <option value="<%=distric.id%>"><%= distric.name %></optio>
           <% end %>
         </select>
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Referencia</label>
-        <input class="form-control" type="text" name="referencia_origen" id="referencia_origen">
+        <label for="">From reference</label>
+        <input class="form-control" type="text" name="from_reference_two" id="from_reference_two">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to('#moda_favoritos', :class => 'btn btn-info', :'id' => "agregar_favoritos_origen", :'data-toggle'=>'modal') do %>
-            <i class="fa fa-dashboard"> </i><span>Agregar de favorito</span>
-        <% end %>
+        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
       </div>
   </div>
   <div class="row">
-   <!--<div class="col-md-4">
-      <%= f.input :from_address_id %>
-      <%= error_span(@service[:from_address_id]) %>
-    </div>-->
+    <div class='hidden'>
+      <input class="form-control" type="text" name="to_address_two_id" id="to_address_two_id">
+    </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Dirección hasta</label>
-        <input class="form-control" type="text" name="direccion_hasta" id="direccion_destino">
+        <label for="">To address</label>
+        <input class="form-control" type="text" name="to_address_two" id="to_address_two">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Distrito origen</label>
-        <select class="form-control" id="distrito_destino" name="distrito_destino">
+        <label for="">To district</label>
+        <select class="form-control" id="to_district_two" name="to_district_two">
           <% @districts.each do |distric| %>
-            <option><%= distric.name %></optio>
+            <option value="<%=distric.id%>"><%= distric.name %></optio>
           <% end %>
         </select>
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <label for="">Referencia</label>
-        <input class="form-control" type="text" name="referencia_destino" id="referencia_destino">
+        <label for="">To reference</label>
+        <input class="form-control" type="text" name="to_reference_two" id="to_reference_two">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to('#moda_favoritos', :class => 'btn btn-info', :'id' => "agregar_favoritos_origen", :'data-toggle'=>'modal') do %>
-            <i class="fa fa-dashboard"> </i><span>Agregar de favorito</span>
-        <% end %>
+        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
       </div>
     </div>
   </div>
-  <%= link_to 'Add fovorites', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
   
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
@@ -113,42 +103,25 @@
                 
 <% end %>
 
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Mis favoritos</h3>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" id="modal_content">
     **here comes whatever you want to show!**
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
+    <!--<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>-->
   </div>
 </div>
 
-<!--<div class="modal fade" id="moda_favoritos">
-  <div class="content-modal">
-    <div class="modal-header">
-      <a class="close" data-dismiss="modal">&times;</a>
-      <h3>Mis favoritos</h3>
-    </div>
-    <div class="modal-body">
-      <p>Test Modal</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#" class="btn" data-dismiss="modal">Close</a>
-      <input type="button" id="agregar_favorito" class="btn btn-primary" value="agragar">
-    </div>
-  </div>
-</div>-->
-
 <script type="text/javascript">
 $(document).ready(function(){
-  /*$("#agregar_favorito").click(function(){
-    alert("hola");
-   $('#test_modal').modal('hide');
-  });*/
+  
+  
+ 
 });
   
 </script>

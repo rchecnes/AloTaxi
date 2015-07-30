@@ -2248,9 +2248,14 @@ label {
     margin-right: 2px !important;
 }
 
-/*.content-modal{
+.modal{
     background-color: #E7E7E4;
-    padding: 10px;
-}*/
+    margin:50px;
+    /*width: 80%;*/
+}
+
+.hidden{
+    display:none;
+}
 
 
