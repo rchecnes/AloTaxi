@@ -1,0 +1,34 @@
+<%- model_class = Service -%>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:payment_type_id) %></th>
+      <th><%= model_class.human_attribute_name(:to_address_id) %></th>
+      <th><%= model_class.human_attribute_name(:from_address_id) %></th>
+      <th><%= model_class.human_attribute_name(:service_type_id) %></th>
+      <th><%= model_class.human_attribute_name(:phase) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.id %></td>
+        <td><%= service.payment_type_id %></td>
+        <td><%= service.to_address_id %></td>
+        <td><%= service.from_address_id %></td>
+        <td><%= service.service_type_id %></td>
+        <td><%= service.phase %></td>
+          <td>
+        <%= link_to t('.assign_vehicle', :default => t("helpers.links.assign")),
+                      service_drivers_assign_vehicle_path(service), :class => 'btn btn-primary' %>
+         <%= link_to t('.assign_driver', :default => t("helpers.links.assign")),
+                      service_drivers_assign_driver_path(service), :class => 'btn btn-primary' %>               
+      
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

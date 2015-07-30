@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   
-  get 'service_customers/index'
+
+  get 'service_operators/index'
 
   get 'service_drivers/index'
-  
-  get "services/list_favorite" => 'services#list_favorite', :as => :list_favorite
 
+  get "services/list_favorite" => 'services#list_favorite', :as => :list_favorite
+  get "service_operators/assign_vehicle" => 'services#assign_vehicle', :as => :assign_vehicle
 
   resources :services_drivers
+  resources :service_operators
   resources :rates
   resources :favorites
   resources :addresses

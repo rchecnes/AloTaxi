@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
-    @title="Listado de Direcciones"
+    @title="Address List"
     @addresses = Address.all
   end
 
@@ -15,13 +15,13 @@ class AddressesController < ApplicationController
 
   # GET /addresses/new
   def new
-     @title="Nueva Dirección"
+     @title="New Address"
     @address = Address.new
   end
 
   # GET /addresses/1/edit
   def edit
-        @title="Editar Dirección"
+        @title="Edit Address"
   end
 
   # POST /addresses

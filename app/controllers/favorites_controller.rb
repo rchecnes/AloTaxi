@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   # GET /favorites
   # GET /favorites.json
   def index
-    @title="Lista de Favoritos"
+    @title="Favorites list"
     @favorites = Favorite.all
   end
 
@@ -15,13 +15,13 @@ class FavoritesController < ApplicationController
 
   # GET /favorites/new
   def new
-    @title="Nuevo Favorito"
+    @title="New Favorite"
     @favorite = Favorite.new
   end
 
   # GET /favorites/1/edit
   def edit
-      @title="Editar Favorito"
+      @title="Edit Favorite"
   end
 
   # POST /favorites
