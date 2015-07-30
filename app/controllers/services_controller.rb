@@ -83,15 +83,16 @@ class ServicesController < ApplicationController
         
       #insert to services
       @service = Service.new
-      @service.reserved_at ='2015-12-11'
+      @service.scheduled_to ='2015-12-11'
       @service.requested_seats=service_params[:requested_seats]
       @service.vehicle_type_id = service_params[:vehicle_type_id]
       @service.payment_type_id = service_params[:payment_type_id]
       @service.price = service_params[:price]
-      @service.service_type_id = service_params[:service_type_id]
+      @service.service_type_id = 2
       @service.phase = 'Evaluated'
       @service.from_address = @from_address
       @service.to_address = @to_address
+      @service.customer_id = 1
       @service.save
       
       #insert favorite from address

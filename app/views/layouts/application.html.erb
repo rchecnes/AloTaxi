@@ -34,7 +34,6 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-    c
   </head>
 <body id="page-top" class="index">
 
@@ -68,10 +67,10 @@
                         <a href="#contact">Contact</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Sign In</a>
+                        <%= link_to "Sign In", services_path %>
                     </li>
                     <li class="page-scroll">
-                        <%= link_to "Sign UP", services_path %>
+                        <a href="#contact">Sign Up</a>
                     </li>
                 </ul>
             </div>

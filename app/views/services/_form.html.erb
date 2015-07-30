@@ -3,9 +3,9 @@
   <div class="row">
       <div class="col-md-4">
         <div class="form-group right-space">
-          <label for="">Reserved at</label>
-          <%= f.input_field  :reserved_at, as: :string, class: "form-control datepicker", 'data-provide': 'datepicker' %>
-          <%= error_span(@service[:reserved_at]) %>
+          <label for="">Scheduled to</label>
+          <%= f.input_field  :scheduled_to, as: :string, class: "form-control datepicker", 'data-provide': 'datepicker' %>
+          <%= error_span(@service[:scheduled_to]) %>
         </div>
       </div>
       <div class="col-md-4">
@@ -26,10 +26,10 @@
         <%= f.input :price %>
         <%= error_span(@service[:price]) %>
       </div>
-      <div class="col-md-4">
+      <!--<div class="col-md-4">
         <%= f.association :service_type %>
         <%= error_span(@service[:service_type]) %>
-      </div>
+      </div>-->
   </div>
   <div class="row">
     <div class='hidden'>
