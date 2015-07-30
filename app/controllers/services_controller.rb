@@ -83,7 +83,8 @@ class ServicesController < ApplicationController
         
       #insert to services
       @service = Service.new
-      @service.scheduled_to ='2015-12-11'
+      
+      @service.scheduled_to = Date.strptime(service_params[:scheduled_to], '%Y-%m-%d')
       @service.requested_seats=service_params[:requested_seats]
       @service.vehicle_type_id = service_params[:vehicle_type_id]
       @service.payment_type_id = service_params[:payment_type_id]
