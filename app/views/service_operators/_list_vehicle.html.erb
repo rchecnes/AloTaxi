@@ -21,7 +21,7 @@
         <td><%= vehicle.year %></td>
         <td><%= vehicle.brand %></td>
      
-        <td><%= link_to 'Add', assign_vehicle_path(vehicle.id),  { 'class' => 'btn btn-info add_vehicle_to_service'}  %>   
+        <td><%= link_to 'Add', assign_vehicle_path(@service, vehicle),  { 'class' => 'btn btn-info add_vehicle_to_service'}  %>   
         </td>
       </tr>
     <% end %>
