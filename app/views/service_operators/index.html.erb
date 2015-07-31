@@ -20,11 +20,23 @@
         <td><%= service.to_address_id %></td>
         <td><%= service.from_address_id %></td>
         <td><%= service.service_type_id %></td>
-        <td><%= service.phase %></td>
+        <td>
+          <% case service.phase%>
+          <% when 'AP'  %>
+             ACCEPT
+          <% when 'TE'  %>
+             TERMINATED
+          <% when 'RE'  %>
+             REJECTED
+          <% when 'ST'  %>
+             STARTED
+          <% end %>
+          
+        </td>
         <td><%= service.vehicle_id %></td>
           <td>
      <%= link_to 'Select Vehicle', 
-     list_vehicle_path(service),  
+     list_vehicle_path(service.id),  
      {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-vehicle', 'class' => 'btn btn-info'}  %>
                      
       <%= link_to 'Select Driver', 

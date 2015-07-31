@@ -10,18 +10,39 @@ class ServiceDriversController < ApplicationController
 
   end
   
-  def accept
-
+  def accept_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='AP'
+   @service.save()
+    
+    redirect_to service_drivers_index_path
     
   end
   
-  def reject
+  def reject_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='RE'
+   @service.save()
+    
+    redirect_to service_drivers_index_path
   end 
     
-  def start
+  def start_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='ST'
+   @service.save()
+   redirect_to service_drivers_index_path
   end
   
-  def terminate
+  def terminate_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='TE'
+   @service.save()
+   redirect_to service_drivers_index_path
   end
 
 

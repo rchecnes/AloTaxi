@@ -14,7 +14,7 @@ class ServiceOperatorsController < ApplicationController
   
   def list_vehicle
     @vehicles = Vehicle.all
-    @service  = Service.find(params[:service_id])
+    @service = Service.find(params[:id])
   end
   
   def update
@@ -22,8 +22,9 @@ class ServiceOperatorsController < ApplicationController
   
   def assign_vehicle
     
-   @id_vehicle=params[:vehicle_id]
-   @service=Service.find(params[:service_id])
+   @id_vehicle=params[:param2]
+   @id_service=params[:param1]
+   @service=Service.find(@id_service)
    @service.vehicle_id=@id_vehicle
    @service.save()
    
