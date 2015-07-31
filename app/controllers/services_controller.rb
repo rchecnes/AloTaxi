@@ -4,16 +4,18 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @title = "Listado - Servicio de reserva"
+    @title = "List of services"
     @services = Service.all
     
   end
   
   def list_favorite
+    @address_type = params[:address_type]    
     #respond_to do |format|
     #  format.html
     #  format.js
     #end
+        
     @favorites = Favorite.all
   end
 
@@ -24,14 +26,14 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @title = "Nuevo - Servicio de reserva"
+    @title = "New Service"
     @service = Service.new
     @districts = District.all
   end
 
   # GET /services/1/edit
   def edit
-    @title = "Editar - Servicio de reserva"
+    @title = "Edit Service"
     @districts = District.all
   end
 

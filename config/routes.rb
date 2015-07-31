@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'service_drivers/index'
 
-  get "services/list_favorite" => 'services#list_favorite', :as => :list_favorite
+  get "services/list_favorite/:address_type" => 'services#list_favorite', :as => :list_favorite
   get "service_operators/assign_vehicle" => 'services#assign_vehicle', :as => :assign_vehicle
 
   resources :services_drivers

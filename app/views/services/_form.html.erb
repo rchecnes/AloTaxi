@@ -2,7 +2,7 @@
   
   <div class="row">
       <div class="col-md-4">
-          <%= f.input  :scheduled_to, as: :string, input_html: { class: "form-control datepicker", 'data-provide': 'datepicker'} %>
+          <%= f.input  :scheduled_to, as: :string, input_html: { class: "form-control datepicker", 'data-provide':'datepicker'} %>
           <%= error_span(@service[:scheduled_to]) %>
       </div>
       <div class="col-md-4">
@@ -57,7 +57,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
+        <%= link_to 'Add favorite', list_favorite_path('from'),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
       </div>
     </div>
   </div>
@@ -90,7 +90,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
+        <%= link_to 'Add favorite', list_favorite_path('to'),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}%>
       </div>
     </div>
   </div>
@@ -104,7 +104,7 @@
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Mis favoritos</h3>
+    <h3 id="myModalLabel">My Favourites</h3>
   </div>
   <div class="modal-body" id="modal_content">
     **here comes whatever you want to show!**
@@ -116,8 +116,9 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function(){
-});
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
   
 </script>
 

@@ -17,7 +17,7 @@
         <td><%= favorite.address.district.name %></td>
         <td>
             <% address_string = favorite.address.id.to_s+'-'+favorite.address.name+'-'+favorite.address.district.id.to_s+'-'+favorite.address.reference %>
-            <%= link_to 'Add', '#',  { 'class' => 'btn btn-info add_favorite_to_service', 'data'=>address_string}  %>
+            <%= link_to 'Add', '#',  { class: 'add_favorite_to_service btn btn-info', 'data': address_string }  %>
         </td>
       </tr>
     <% end %>
@@ -26,14 +26,23 @@
 <script type="text/javascript">
 $(document).ready(function(){
   
+  var address_type = '<%= @address_type %>';
+  
   $(".add_favorite_to_service").click(function(){
     
     var address_tring = $(this).attr('data').split('-');
     
-    $("#from_address_two_id").val(address_tring[0]);
-    $("#from_address_two").val(address_tring[1]);
-    $("#from_district_two").val(address_tring[2]);
-    $("#from_reference_two").val(address_tring[3]);
+    if(address_type == 'from'){
+      $("#from_address_two_id").val(address_tring[0]);
+      $("#from_address_two").val(address_tring[1]);
+      $("#from_district_two").val(address_tring[2]);
+      $("#from_reference_two").val(address_tring[3]);
+    }else{
+      $("#to_address_two_id").val(address_tring[0]);
+      $("#to_address_two").val(address_tring[1]);
+      $("#to_district_two").val(address_tring[2]);
+      $("#to_reference_two").val(address_tring[3]);
+    }
     
     $(".close").click();
     
