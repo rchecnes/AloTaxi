@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "services/list_favorite" => 'services#list_favorite', :as => :list_favorite
   get "service_operators/list_vehicle" => 'service_operators#list_vehicle', :as => :list_vehicle
   get "service_operators/list_driver" => 'service_operators#list_driver', :as => :list_driver
+  get "service_operators/assign_vehicle/:id" => 'service_operators#assign_vehicle', :as => :assign_vehicle
   
 
 

@@ -20,8 +20,8 @@
         <td><%= vehicle.plate %></td>
         <td><%= vehicle.year %></td>
         <td><%= vehicle.brand %></td>
-        <td><%= vehicle.soat %></td>
-           
+     
+        <td><%= link_to 'Add', assign_vehicle_path(vehicle.id),  { 'class' => 'btn btn-info add_vehicle_to_service'}  %>   
         </td>
       </tr>
     <% end %>
