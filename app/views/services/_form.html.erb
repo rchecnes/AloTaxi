@@ -2,11 +2,8 @@
   
   <div class="row">
       <div class="col-md-4">
-        <div class="form-group right-space">
-          <label for="">Reserved at</label>
-          <%= f.input_field  :reserved_at, as: :string, class: "form-control datepicker", 'data-provide': 'datepicker' %>
-          <%= error_span(@service[:reserved_at]) %>
-        </div>
+          <%= f.input  :scheduled_to, as: :string, input_html: { class: "form-control datepicker", 'data-provide':'datepicker'} %>
+          <%= error_span(@service[:scheduled_to]) %>
       </div>
       <div class="col-md-4">
           <%= f.input :requested_seats, class: "form-control" %>
@@ -26,10 +23,10 @@
         <%= f.input :price %>
         <%= error_span(@service[:price]) %>
       </div>
-      <div class="col-md-4">
+      <!--<div class="col-md-4">
         <%= f.association :service_type %>
         <%= error_span(@service[:service_type]) %>
-      </div>
+      </div>-->
   </div>
   <div class="row">
     <div class='hidden'>
@@ -60,7 +57,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
+        <%= link_to 'Add favorite', list_favorite_path('from'),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
       </div>
   </div>
   <div class="row">
@@ -92,7 +89,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label>&nbsp;</label><br>
-        <%= link_to 'Add favorite', list_favorite_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}  %>
+        <%= link_to 'Add favorite', list_favorite_path('to'),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'class' => 'btn btn-info'}%>
       </div>
     </div>
   </div>
@@ -106,7 +103,7 @@
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Mis favoritos</h3>
+    <h3 id="myModalLabel">My Favourites</h3>
   </div>
   <div class="modal-body" id="modal_content">
     **here comes whatever you want to show!**
@@ -118,11 +115,9 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function(){
-  
-  
- 
-});
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
   
 </script>
 

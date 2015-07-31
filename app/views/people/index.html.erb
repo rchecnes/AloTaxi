@@ -6,12 +6,12 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:Nombre) %></th>
-      <th><%= model_class.human_attribute_name(:Apeliidos) %></th>
-      <th><%= model_class.human_attribute_name(:Dni) %></th>
-      <th><%= model_class.human_attribute_name(:Licencia) %></th>
+      <th><%= model_class.human_attribute_name(:first_name) %></th>
+      <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:dni) %></th>
+      <th><%= model_class.human_attribute_name(:license) %></th>
      <!-- <th><%= model_class.human_attribute_name(:created_at) %></th>-->
-      <th><%=t '.actions', :default => t("helpers.Acciones") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>

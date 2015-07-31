@@ -4,7 +4,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @title = "Listado - Vehiculos"
+    @title = "List of Vehicles"
     @vehicles = Vehicle.all
   end
 
@@ -15,13 +15,13 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    @title ="Nuevo - Vehiculo"
+    @title ="New Vehicle"
     @vehicle = Vehicle.new
   end
 
   # GET /vehicles/1/edit
   def edit
-     @title ="Editar - Vehiculo"
+     @title ="Edit Vehicle"
   end
 
   # POST /vehicles

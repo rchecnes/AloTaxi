@@ -11,7 +11,7 @@
       <th><%= model_class.human_attribute_name(:reference) %></th>
       <th><%= model_class.human_attribute_name(:district_id) %></th>
     <!--  <th><%= model_class.human_attribute_name(:created_at) %></th>-->
-      <th><%=t '.actions', :default => t("helpers.Acciones") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -19,9 +19,9 @@
       <tr>
       <!--  <td><%= link_to address.id, address_path(address) %></td>-->
         <td><%= address.description %></td>
-     <!--   <td><%= address.state %></td>-->
+     <!--   <td><%= address.state %></td> -->
         <td><%= address.reference %></td>
-        <td><%= address.district.name %></td><!--linea agregada emr-->
+        <td></td>
    <!--     <td><%=l address.created_at %></td>-->
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

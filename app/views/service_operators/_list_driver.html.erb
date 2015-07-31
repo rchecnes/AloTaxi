@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombres</th>
+      <th>licencia</th>
+  
+    </tr>
+  </thead>
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= link_to person.id, person_path(person) %></td>
+        <td><%= person.first_name +' - '+ person.last_name%></td>
+        <td><%= person.license %></td>
+        <td>
+           
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
