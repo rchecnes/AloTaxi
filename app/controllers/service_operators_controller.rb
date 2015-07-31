@@ -13,7 +13,8 @@ class ServiceOperatorsController < ApplicationController
   end
   
   def list_vehicle
-    @vehicles=Vehicle.all
+    @vehicles = Vehicle.all
+    @service  = Service.find(params[:service_id])
   end
   
   def update
@@ -21,22 +22,18 @@ class ServiceOperatorsController < ApplicationController
   
   def assign_vehicle
     
-      respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'service  was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
-      else
-        format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
-    end
+   @id_vehicle=params[:vehicle_id]
+   @service=Service.find(params[:service_id])
+   @service.vehicle_id=@id_vehicle
+   @service.save()
+   
+  redirect_to service_operators_index_path
+   
   end
   
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_service
-      @service = Service.find(params[:id])
-    end
+   
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
