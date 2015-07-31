@@ -4,7 +4,7 @@ class VehicleTypesController < ApplicationController
   # GET /vehicle_types
   # GET /vehicle_types.json
   def index
-    @title="Tipo de vehiculos"
+    @title="Vehicle Types"
     @vehicle_types = VehicleType.all
   end
 
@@ -15,8 +15,9 @@ class VehicleTypesController < ApplicationController
 
   # GET /vehicle_types/new
   def new
-    @title="Nuevo Vehiculo"
+    @title="Nuevo Tipo de Vehiculo"
     @vehicle_type = VehicleType.new
+    
   end
 
   # GET /vehicle_types/1/edit

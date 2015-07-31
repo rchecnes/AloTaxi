@@ -4,6 +4,7 @@ class ServiceTypesController < ApplicationController
   # GET /service_types
   # GET /service_types.json
   def index
+    @title="Services Types"
     @service_types = ServiceType.all
   end
 

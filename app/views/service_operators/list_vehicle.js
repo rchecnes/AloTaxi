@@ -1,0 +1,1 @@
+$("#modal_content").html("<%= escape_javascript(render 'service_operators/list_vehicle') %>");
