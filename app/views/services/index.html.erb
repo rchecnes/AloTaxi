@@ -13,6 +13,7 @@
   <tbody>
     <% @services.each do |service| %>
       <tr>
+        
         <td><%= service.vehicle_type.name %></td>
         <td><%= service.payment_type.name %></td>
         <td><%= service.price %></td>
