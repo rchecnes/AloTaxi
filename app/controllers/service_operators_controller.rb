@@ -5,11 +5,13 @@ class ServiceOperatorsController < ApplicationController
   # GET /services.json
    def index
     @title = "Asignar Vehiculos a Servicios"
-    @services = Service.all
+   
+    @services = Service.where("phase='Evaluated'")
    end
   
   def list_driver
-    @drivers=Driver.all
+    @people=Person.all
+    @service = Service.find(params[:id])
   end
   
   def list_vehicle
@@ -17,9 +19,8 @@ class ServiceOperatorsController < ApplicationController
     @service = Service.find(params[:id])
   end
   
-  def update
-  end   
   
+ 
   def assign_vehicle
     
    @service=Service.find(params[:param1])
@@ -28,7 +29,19 @@ class ServiceOperatorsController < ApplicationController
    
   end
   
-
+  def assign_driver
+    
+   @service=Service.find(params[:param1])
+   @service.update_attributes(:driver_id => params[:param2])
+  redirect_to service_operators_index_path
+   
+  end
+  
+  def confirm_assigned
+     @service=Service.find(params[:param])
+     @service.update_attributes(:phase => "Asigned")
+     redirect_to service_operators_index_path 
+  end
 
 end  
 

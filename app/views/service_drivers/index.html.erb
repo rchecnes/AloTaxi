@@ -19,18 +19,7 @@
         <td><%= service.to_address_id %></td>
         <td><%= service.from_address_id %></td>
         <td><%= service.service_type_id %></td>
-        <td>
-          <% case service.phase%>
-          <% when 'AP'  %>
-             ACCEPT
-          <% when 'TE'  %>
-             TERMINATED
-          <% when 'RE'  %>
-             REJECTED
-          <% when 'ST'  %>
-             STARTED
-          <% end %>
-        </td>
+        <td><%= service.phase%></td>
           <td>
         <%= link_to t('.accept', :default => t("helpers.links.Aceptar")),
                       accept_service_path(:param => service.id), :class => 'btn btn-primary' %> 
