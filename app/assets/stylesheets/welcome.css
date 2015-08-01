@@ -13,9 +13,6 @@
 
  *= require_self
  *= require bootstrap_and_overrides
- *= require bootstrap-datepicker
- *= require bootstrap-modal
- *= require sb-admin
- *= require style_admin
+ *= require taxionline_web
  * require_tree .
  */
