@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'service_history/index'
+
   get 'service_operators/index'
   get 'service_drivers/index'
   get "service_drivers/accept_service" => 'service_drivers#accept_service', :as => :accept_service
