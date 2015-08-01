@@ -33,7 +33,9 @@
           <% end %>
           
         </td>
-        <td><%= service.vehicle_id %></td>
+        <td>
+          <%=service.vehicle_id %>
+        </td>
           <td>
      <%= link_to 'Select Vehicle', 
      list_vehicle_path(service.id),  
