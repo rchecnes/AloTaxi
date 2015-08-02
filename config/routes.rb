@@ -15,9 +15,14 @@ Rails.application.routes.draw do
   get "services/list_favorite/:address_type" => 'services#list_favorite', :as => :list_favorite
 
   get "service_operators/list_vehicle/:id" => 'service_operators#list_vehicle', :as => :list_vehicle
-  get "service_operators/list_driver" => 'service_operators#list_driver', :as => :list_driver
+  get "service_operators/list_driver/:id" => 'service_operators#list_driver', :as => :list_driver
   get "service_operators/assign_vehicle" => 'service_operators#assign_vehicle', :as => :assign_vehicle
+  get "service_operators/assign_driver" => 'service_operators#assign_driver', :as => :assign_driver
+  get "service_operators/confirm_assigned" => 'service_operators#confirm_assigned', :as => :confirm_assigned
   
+  
+  
+
   
   resources :services_drivers
   resources :service_operators
