@@ -5,23 +5,21 @@
       <th><%= model_class.human_attribute_name(:vehicle_type_id) %></th>
       <th><%= model_class.human_attribute_name(:payment_type_id) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:scheduled_to) %></th>
       <th><%= model_class.human_attribute_name(:estatus) %></th>
       <th><%=t '.actions', :default => t("helpers.Actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @services.each do |service| %>
+    <% @inmediate_services.each do |inmediate_service| %>
       <tr>
         
-        <td><%= service.vehicle_type.name %></td>
-        <td><%= service.payment_type.name %></td>
-        <td><%= service.price %></td>
-        <td><%= service.scheduled_to %></td>
-        <td><%= service.phase %></td>
+        <td><%= inmediate_service.vehicle_type.name %></td>
+        <td><%= inmediate_service.payment_type.name %></td>
+        <td><%= inmediate_service.price %></td>
+        <td><%= inmediate_service.phase %></td>
         <td>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      service_path(service),
+                      inmediate_service_path(inmediate_service),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -32,5 +30,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_service_path,
+            new_inmediate_service_path,
             :class => 'btn btn-primary' %>

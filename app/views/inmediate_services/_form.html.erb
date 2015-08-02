@@ -1,23 +1,18 @@
-<%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
-  
+<%= simple_form_for @inmediate_service, :url => inmediate_services_path, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="row">
       <div class="col-md-3">
-          <%= f.input  :scheduled_to, as: :string, input_html: { class: "form-control datepicker", 'data-provide':'datepicker'} %>
-          <%= error_span(@service[:scheduled_to]) %>
-      </div>
-      <div class="col-md-3">
           <%= f.input :requested_seats, class: "form-control" %>
-          <%= error_span(@service[:requested_seats]) %>
+          <%= error_span(@inmediate_service[:requested_seats]) %>
       </div>
   </div>
   <div class="row">
     <div class="col-md-3">
         <%= f.association :vehicle_type, class: "form-control" %>
-        <%= error_span(@service[:vehicle_type]) %>
+        <%= error_span(@inmediate_service[:vehicle_type]) %>
     </div>
     <div class="col-md-3">
       <%= f.association :payment_type %>
-      <%= error_span(@service[:payment_type]) %>
+      <%= error_span(@inmediate_service[:payment_type]) %>
     </div>
   </div>
   <div class="row">
@@ -91,14 +86,15 @@
   <div class="row">
     <div class="col-md-3">
       <%= f.input :price %>
-      <%= error_span(@service[:price]) %>
+      <%= error_span(@inmediate_service[:price]) %>
     </div>
     
   </div>
   
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                services_path, :class => 'btn btn-default' %>
+                inmediate_services_path, :class => 'btn btn-default' %>
+                
   <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -114,8 +110,6 @@
   </div>
   
   <script type="text/javascript">
-    //$("#service_price").attr("readonly","readonly");
-    
     $("#from_address_clear").click(function(){
       
       $("#from_address_two_id").val("").removeAttr("readonly");

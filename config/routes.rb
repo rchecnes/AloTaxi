@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :inmediate_services
   get 'service_history/index'
 
   get 'service_operators/index'
