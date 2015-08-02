@@ -8,8 +8,10 @@
   <dd><%= @rate.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
   <dd><%= @rate.price %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:district_id) %>:</strong></dt>
-  <dd><%= @rate.district_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:from_district_id) %>:</strong></dt>
+  <dd><%= @rate.from_district.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:to_district_id) %>:</strong></dt>
+  <dd><%= @rate.to_district.name %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

@@ -3,9 +3,12 @@
   <%= error_span(@rate[:name]) %>
   <%= f.input :price %>
   <%= error_span(@rate[:price]) %>
-  <%= f.input :district_id %>
-  <%= error_span(@rate[:district_id]) %>
+  <%= f.association :from_district %>
+  <%= error_span(@rate[:from_district]) %>
 
+ <%= f.association :to_district %>
+  <%= error_span(@rate[:to_district]) %>
+  
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 rates_path, :class => 'btn btn-default' %>

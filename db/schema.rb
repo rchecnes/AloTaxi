@@ -79,12 +79,6 @@ ActiveRecord::Schema.define(version: 20150802173001) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "seed_migration_data_migrations", force: :cascade do |t|
-    t.string   "version",     limit: 255
-    t.integer  "runtime",     limit: 4
-    t.datetime "migrated_on"
-  end
-
   create_table "service_types", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535

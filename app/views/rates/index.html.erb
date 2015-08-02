@@ -8,7 +8,8 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:district_id) %></th>
+      <th><%= model_class.human_attribute_name(:from_district_id) %></th>
+        <th><%= model_class.human_attribute_name(:to_district_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -19,7 +20,8 @@
         <td><%= link_to rate.id, rate_path(rate) %></td>
         <td><%= rate.name %></td>
         <td><%= rate.price %></td>
-        <td><%= rate.district_id %></td>
+        <td><%= rate.from_district.name %></td>
+        <td><%= rate.to_district.name %></td>
         <td><%=l rate.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
