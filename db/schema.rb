@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802164543) do
+ActiveRecord::Schema.define(version: 20150802173001) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -59,20 +59,18 @@ ActiveRecord::Schema.define(version: 20150802164543) do
   end
 
   create_table "rates", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.float    "price",           limit: 24
-    t.integer  "district_id",     limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "from_address_id", limit: 4
-    t.integer  "to_address_id",   limit: 4
-    t.integer  "service_type_id", limit: 4
+    t.string   "name",             limit: 255
+    t.float    "price",            limit: 24
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "from_district_id", limit: 4
+    t.integer  "to_district_id",   limit: 4
+    t.integer  "vehicle_type_id",  limit: 4
   end
 
-  add_index "rates", ["district_id"], name: "index_rates_on_district_id", using: :btree
-  add_index "rates", ["from_address_id"], name: "index_rates_on_from_address_id", using: :btree
-  add_index "rates", ["service_type_id"], name: "index_rates_on_service_type_id", using: :btree
-  add_index "rates", ["to_address_id"], name: "index_rates_on_to_address_id", using: :btree
+  add_index "rates", ["from_district_id"], name: "index_rates_on_from_district_id", using: :btree
+  add_index "rates", ["to_district_id"], name: "index_rates_on_to_district_id", using: :btree
+  add_index "rates", ["vehicle_type_id"], name: "index_rates_on_vehicle_type_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -157,6 +155,7 @@ ActiveRecord::Schema.define(version: 20150802164543) do
   add_foreign_key "addresses", "districts"
   add_foreign_key "favorites", "addresses"
   add_foreign_key "favorites", "people"
+  add_foreign_key "rates", "vehicle_types"
   add_foreign_key "services", "payment_types"
   add_foreign_key "services", "service_types"
   add_foreign_key "services", "vehicle_types"
