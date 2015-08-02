@@ -15,14 +15,14 @@ class VehicleTypesController < ApplicationController
 
   # GET /vehicle_types/new
   def new
-    @title="Nuevo Tipo de Vehiculo"
+    @title="New Type of Vehicle"
     @vehicle_type = VehicleType.new
     
   end
 
   # GET /vehicle_types/1/edit
   def edit
-    @title="Editar Tipo de Vehiculo"
+    @title="Edit Type of Vehicle"
   end
 
   # POST /vehicle_types

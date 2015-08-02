@@ -1,4 +1,9 @@
 <%- model_class = Service -%>
+<span class="information">A = Accepted ; </span>
+<span class="information">R = Rejected  </span><br>
+<span class="information">S = Started ; </span>
+<span class="information">T = Terminated</span>
+<br>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -6,7 +11,6 @@
       <th><%= model_class.human_attribute_name(:payment_type_id) %></th>
       <th><%= model_class.human_attribute_name(:to_address_id) %></th>
       <th><%= model_class.human_attribute_name(:from_address_id) %></th>
-      <th><%= model_class.human_attribute_name(:service_type_id) %></th>
       <th><%= model_class.human_attribute_name(:phase) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -15,19 +19,23 @@
     <% @services.each do |service| %>
       <tr>
         <td><%= service.id %></td>
-        <td><%= service.payment_type_id %></td>
-        <td><%= service.to_address_id %></td>
-        <td><%= service.from_address_id %></td>
-        <td><%= service.service_type_id %></td>
+        <td><%= service.payment_type.name%></td>
+        <td><%= service.to_address.name %></td>
+        <td><%= service.from_address.name %></td>
         <td><%= service.phase%></td>
           <td>
-        <%= link_to t('.accept', :default => t("helpers.links.Aceptar")),
+            <% if service.phase=="Accepted" %>
+              <%= link_to t('.accept', :default => t("helpers.links.A")),
                       accept_service_path(:param => service.id), :class => 'btn btn-primary' %> 
-        <%= link_to t('.reject', :default => t("helpers.links.Rechazar")),
+            <% else%>
+            ...
+            <%end %>
+                      
+        <%= link_to t('.reject', :default => t("helpers.links.R")),
                       reject_service_path(:param => service.id), :class => 'btn btn-primary' %>              
-        <%= link_to t('.start', :default => t("helpers.links.Empezar")),
+        <%= link_to t('.start', :default => t("helpers.links.E")),
                       start_service_path(:param => service.id), :class => 'btn btn-primary' %>
-        <%= link_to t('.terminate', :default => t("helpers.links.Terminar")),
+        <%= link_to t('.terminate', :default => t("helpers.links.T")),
                       terminate_service_path(:param => service.id), :class => 'btn btn-primary' %>
           </td>
       </tr>

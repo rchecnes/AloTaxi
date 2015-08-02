@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802173001) do
+ActiveRecord::Schema.define(version: 20150802180849) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -63,12 +63,18 @@ ActiveRecord::Schema.define(version: 20150802173001) do
     t.float    "price",            limit: 24
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "from_address_id",  limit: 4
+    t.integer  "to_address_id",    limit: 4
+    t.integer  "service_type_id",  limit: 4
     t.integer  "from_district_id", limit: 4
     t.integer  "to_district_id",   limit: 4
     t.integer  "vehicle_type_id",  limit: 4
   end
 
+  add_index "rates", ["from_address_id"], name: "index_rates_on_from_address_id", using: :btree
   add_index "rates", ["from_district_id"], name: "index_rates_on_from_district_id", using: :btree
+  add_index "rates", ["service_type_id"], name: "index_rates_on_service_type_id", using: :btree
+  add_index "rates", ["to_address_id"], name: "index_rates_on_to_address_id", using: :btree
   add_index "rates", ["to_district_id"], name: "index_rates_on_to_district_id", using: :btree
   add_index "rates", ["vehicle_type_id"], name: "index_rates_on_vehicle_type_id", using: :btree
 
@@ -116,6 +122,24 @@ ActiveRecord::Schema.define(version: 20150802173001) do
   add_index "services", ["to_address_id"], name: "index_services_on_to_address_id", using: :btree
   add_index "services", ["vehicle_id"], name: "index_services_on_vehicle_id", using: :btree
   add_index "services", ["vehicle_type_id"], name: "index_services_on_vehicle_type_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "vehicle_types", force: :cascade do |t|
     t.string   "name",        limit: 255
