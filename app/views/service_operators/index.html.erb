@@ -17,10 +17,9 @@
     <% @services.each do |service| %>
       <tr>
         <td><%= service.id %></td>
-        <td><%= service.payment_type_id %></td>
-        <td><%= service.to_address_id %></td>
-        <td><%= service.from_address_id %></td>
-        <td><%= service.service_type_id %></td>
+        <td><%= service.payment_type.name %></td>
+        <td><%= service.from_address.name %></td>
+        <td><%= service.to_address.name %></td>
         <td><%= service.phase%></td>
         <td><%=service.vehicle_id %></td>
         <td><%=service.driver_id %></td>

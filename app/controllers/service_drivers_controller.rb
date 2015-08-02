@@ -6,7 +6,7 @@ class ServiceDriversController < ApplicationController
 
     @chofer=1
     @phase="Asigned"
-    @title = "Servicios Asignados"
+    @title = "Assigned Services"
     @services = Service.where(driver_id:@chofer , phase:@phase)
 
   end

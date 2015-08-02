@@ -4,7 +4,7 @@ class ServiceOperatorsController < ApplicationController
   # GET /services
   # GET /services.json
    def index
-    @title = "Asignar Vehiculos a Servicios"
+    @title = "Assign vehicles to services"
    
     @services = Service.where("phase='Evaluated'")
    end
