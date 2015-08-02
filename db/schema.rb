@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150802180849) do
 
-
   create_table "addresses", force: :cascade do |t|
     t.string   "description", limit: 255
     t.boolean  "state",       limit: 1

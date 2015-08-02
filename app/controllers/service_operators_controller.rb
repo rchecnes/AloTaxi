@@ -6,7 +6,7 @@ class ServiceOperatorsController < ApplicationController
    def index
     @title = "Assign vehicles to services"
    
-    @services = Service.where("phase='Evaluated'")
+    @services = Service.all
    end
   
   def list_driver

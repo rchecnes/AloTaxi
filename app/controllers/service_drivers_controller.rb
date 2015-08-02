@@ -5,9 +5,9 @@ class ServiceDriversController < ApplicationController
   def index
 
     @chofer=1
-    @phase="Asigned"
+   
     @title = "Assigned Services"
-    @services = Service.where(driver_id:@chofer , phase:@phase)
+    @services = Service.where(driver_id:@chofer)
 
   end
   
