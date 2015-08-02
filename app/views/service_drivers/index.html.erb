@@ -19,16 +19,16 @@
         <td><%= service.to_address_id %></td>
         <td><%= service.from_address_id %></td>
         <td><%= service.service_type_id %></td>
-        <td><%= service.phase %></td>
+        <td><%= service.phase%></td>
           <td>
         <%= link_to t('.accept', :default => t("helpers.links.Aceptar")),
-                      service_drivers_index_path(service), :class => 'btn btn-primary' %> 
+                      accept_service_path(:param => service.id), :class => 'btn btn-primary' %> 
         <%= link_to t('.reject', :default => t("helpers.links.Rechazar")),
-                      service_drivers_index_path(service), :class => 'btn btn-primary' %>              
+                      reject_service_path(:param => service.id), :class => 'btn btn-primary' %>              
         <%= link_to t('.start', :default => t("helpers.links.Empezar")),
-                      service_drivers_index_path(service), :class => 'btn btn-primary' %>
+                      start_service_path(:param => service.id), :class => 'btn btn-primary' %>
         <%= link_to t('.terminate', :default => t("helpers.links.Terminar")),
-                      service_drivers_index_path(service), :class => 'btn btn-primary' %>
+                      terminate_service_path(:param => service.id), :class => 'btn btn-primary' %>
           </td>
       </tr>
     <% end %>

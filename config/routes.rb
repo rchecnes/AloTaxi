@@ -1,15 +1,28 @@
 Rails.application.routes.draw do
   
 
+  resources :inmediate_services
+  get 'service_history/index'
+
   get 'service_operators/index'
   get 'service_drivers/index'
+  get "service_drivers/accept_service" => 'service_drivers#accept_service', :as => :accept_service
+  get "service_drivers/reject_service" => 'service_drivers#reject_service', :as => :reject_service
+  get "service_drivers/start_service" => 'service_drivers#start_service', :as => :start_service
+  get "service_drivers/terminate_service" => 'service_drivers#terminate_service', :as => :terminate_service
+
 
   get "services/list_favorite/:address_type" => 'services#list_favorite', :as => :list_favorite
 
-  get "services/list_favorite" => 'services#list_favorite', :as => :list_favorite
-  get "service_operators/list_vehicle" => 'service_operators#list_vehicle', :as => :list_vehicle
-  get "service_operators/list_driver" => 'service_operators#list_driver', :as => :list_driver
+  get "service_operators/list_vehicle/:id" => 'service_operators#list_vehicle', :as => :list_vehicle
+  get "service_operators/list_driver/:id" => 'service_operators#list_driver', :as => :list_driver
   get "service_operators/assign_vehicle" => 'service_operators#assign_vehicle', :as => :assign_vehicle
+  get "service_operators/assign_driver" => 'service_operators#assign_driver', :as => :assign_driver
+  get "service_operators/confirm_assigned" => 'service_operators#confirm_assigned', :as => :confirm_assigned
+  
+  
+  
+
   
   resources :services_drivers
   resources :service_operators

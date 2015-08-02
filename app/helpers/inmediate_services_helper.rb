@@ -1,0 +1,2 @@
+module InmediateServicesHelper
+end

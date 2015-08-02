@@ -1,64 +1,35 @@
-class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+class InmediateServicesController < ApplicationController
+  before_action :set_inmediate_service, only: [:show, :edit, :update, :destroy]
   layout "administrator"
-  # GET /services
-  # GET /services.json
+  # GET /inmediate_services
+  # GET /inmediate_services.json
   def index
-    @title = "Taxi booking service"
-    #@services = Service.all
-    @service_type = ServiceType.find(2)
-    @services = Service.where(service_type:@service_type)
-    
-  end
-  
-  def list_favorite
-    @address_type = params[:address_type]    
-    #respond_to do |format|
-    #  format.html
-    #  format.js
-    #end
-        
-    @favorites = Favorite.all
+    @title = "Taxi rank"
+    @service_type = ServiceType.find(1)
+    @inmediate_services = Service.where(service_type:@service_type)
   end
 
-  # GET /services/1
-  # GET /services/1.json
+  # GET /inmediate_services/1
+  # GET /inmediate_services/1.json
   def show
   end
 
-  # GET /services/new
+  # GET /inmediate_services/new
   def new
-    @title = "New Taxi booking service"
-    @service = Service.new
+    @title = "New taxi rank"
     @districts = District.all
+    @inmediate_service = Service.new
   end
 
-  # GET /services/1/edit
+  # GET /inmediate_services/1/edit
   def edit
-    @title = "Edit Taxi booking service"
-    @districts = District.all
   end
 
-  # POST /services
-  # POST /services.json
+  # POST /inmediate_services
+  # POST /inmediate_services.json
   def create
-    #@service = Service.new(service_params)
-  
-    #respond_to do |format|
-    #  if @service.save
-    #    format.html { redirect_to @service, notice: 'Service was successfully created.' }
-    #    format.json { render :show, status: :created, location: @service }
-    #  else
-    #    format.html { render :new }
-    #    format.json { render json: @service.errors, status: :unprocessable_entity }
-    #  end
-    #end
-    
-    
-    
     respond_to do |format|
       
-      #@service = Service.new
       @from_address = Address.new
       @to_address = Address.new
       
@@ -86,19 +57,19 @@ class ServicesController < ApplicationController
       end
         
       #insert to services
-      @service = Service.new
+      @inmediate_service = Service.new
       
-      @service.scheduled_to = service_params[:scheduled_to]
-      @service.requested_seats=service_params[:requested_seats]
-      @service.vehicle_type_id = service_params[:vehicle_type_id]
-      @service.payment_type_id = service_params[:payment_type_id]
-      @service.price = service_params[:price]
-      @service.service_type_id = 2
-      @service.phase = 'Evaluated'
-      @service.from_address = @from_address
-      @service.to_address = @to_address
-      @service.customer_id = 1
-      #@service.save
+      #@service.scheduled_to = service_params[:scheduled_to]
+      @inmediate_service.requested_seats=service_params[:requested_seats]
+      @inmediate_service.vehicle_type_id = service_params[:vehicle_type_id]
+      @inmediate_service.payment_type_id = service_params[:payment_type_id]
+      @inmediate_service.price = service_params[:price]
+      @inmediate_service.service_type_id = 1
+      @inmediate_service.phase = 'Evaluated'
+      @inmediate_service.from_address = @from_address
+      @inmediate_service.to_address = @to_address
+      @inmediate_service.customer_id = 1
+      #@inmediate_service.save
       
       #insert favorite from address
       @favorite_from_address = Favorite.find_by(address:@from_address);
@@ -124,31 +95,31 @@ class ServicesController < ApplicationController
         @favorite_to_address.save
       end
       
-      if @service.save
-        #format.html { redirect_to controller: "services", action: "index" }
-        format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      if @inmediate_service.save
+        format.html { redirect_to inmediate_services_url, notice: 'Service was successfully destroyed.' }
         format.json { head :no_content }
       else
-        @title = "New inmediate service"
+        @title = "New taxi rank"
         @districts = District.all
         
         format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+        format.json { render json: @inmediate_service.errors, status: :unprocessable_entity }
       end
+      
     end
-    
   end
 
-  # PATCH/PUT /services/1
-  # PATCH/PUT /services/1.json
+  # PATCH/PUT /inmediate_services/1
+  # PATCH/PUT /inmediate_services/1.json
   def update
     respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
+      if @inmediate_service.update(inmediate_service_params)
+        format.html { redirect_to @inmediate_service, notice: 'Inmediate service was successfully updated.' }
+        format.json { render :show, status: :ok, location: @inmediate_service }
       else
+       
         format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+        format.json { render json: @inmediate_service.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -156,21 +127,23 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
-    @service.destroy
+    @inmediate_service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to inmediate_services_url, notice: 'Service was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_service
-      @service = Service.find(params[:id])
+    def set_inmediate_service
+      @inmediate_service = Service.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
+    
+      #params.require(:inmediate_service).permit(:name)
       params.require(:service).permit(:phase, :reserved_at, :confirmed_at, :cancelled_at, :scheduled_to, :requested_seats, :started_at, :ended_at, :price, :vehicle_id, :service_type_id, :payment_type_id, :customer_id, :driver_id, :from_address_id, :to_address_id, :vehicle_type_id)
     end
 end

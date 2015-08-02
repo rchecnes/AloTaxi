@@ -56,4 +56,3 @@ gem 'bootstrap-modal-rails'
 #Form management gem set
 gem 'simple_form'
 
-

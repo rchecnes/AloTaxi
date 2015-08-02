@@ -5,23 +5,45 @@ class ServiceDriversController < ApplicationController
   def index
 
     @chofer=1
+    @phase="Asigned"
     @title = "Servicios Asignados"
-    @services = Service.where(driver_id:@chofer)
+    @services = Service.where(driver_id:@chofer , phase:@phase)
 
   end
   
-  def accept
-
+  def accept_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='Accepted'
+   @service.save()
+    
+    redirect_to service_drivers_index_path
     
   end
   
-  def reject
+  def reject_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='Rejected'
+   @service.save()
+    
+    redirect_to service_drivers_index_path
   end 
     
-  def start
+  def start_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='Started'
+   @service.save()
+   redirect_to service_drivers_index_path
   end
   
-  def terminate
+  def terminate_service
+   @id_service=params[:param]
+   @service=Service.find(@id_service)
+   @service.phase='Terminated'
+   @service.save()
+   redirect_to service_drivers_index_path
   end
 
 

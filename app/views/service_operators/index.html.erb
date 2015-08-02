@@ -9,6 +9,7 @@
       <th><%= model_class.human_attribute_name(:service_type_id) %></th>
       <th><%= model_class.human_attribute_name(:phase) %></th>
       <th><%= model_class.human_attribute_name(:vehicle_id) %></th>
+      <th><%= model_class.human_attribute_name(:driver_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,16 +21,21 @@
         <td><%= service.to_address_id %></td>
         <td><%= service.from_address_id %></td>
         <td><%= service.service_type_id %></td>
-        <td><%= service.phase %></td>
-        <td><%= service.vehicle_id %></td>
+        <td><%= service.phase%></td>
+        <td><%=service.vehicle_id %></td>
+        <td><%=service.driver_id %></td>
+       
           <td>
      <%= link_to 'Select Vehicle', 
-     list_vehicle_path(service),  
+     list_vehicle_path(service.id),  
      {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-vehicle', 'class' => 'btn btn-info'}  %>
                      
       <%= link_to 'Select Driver', 
-     list_driver_path,  
+     list_driver_path(service.id),  
      {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-driver', 'class' => 'btn btn-info'}  %>
+     
+     <%= link_to t('.confirm_assigned', :default => t("helpers.links.Asigned")),
+                      confirm_assigned_path(:param => service.id), :class => 'btn btn-info' %>
           </td>
       </tr>
     <% end %>

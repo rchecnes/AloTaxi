@@ -1,0 +1,44 @@
+<%- model_class = Service -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:phase) %>:</strong></dt>
+  <dd><%= @service.phase %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reserved_at) %>:</strong></dt>
+  <dd><%= @service.reserved_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:confirmed_at) %>:</strong></dt>
+  <dd><%= @service.confirmed_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cancelled_at) %>:</strong></dt>
+  <dd><%= @service.cancelled_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:scheduled_to) %>:</strong></dt>
+  <dd><%= @service.scheduled_to %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:requested_seats) %>:</strong></dt>
+  <dd><%= @service.requested_seats %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:started_at) %>:</strong></dt>
+  <dd><%= @service.started_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ended_at) %>:</strong></dt>
+  <dd><%= @service.ended_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dd><%= @service.price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:vehicle_id) %>:</strong></dt>
+  <dd><%= @service.vehicle_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:service_type_id) %>:</strong></dt>
+  <dd><%= @service.service_type_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:payment_type_id) %>:</strong></dt>
+  <dd><%= @service.payment_type_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:customer_id) %>:</strong></dt>
+  <dd><%= @service.customer_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:driver_id) %>:</strong></dt>
+  <dd><%= @service.driver_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:to_address_id) %>:</strong></dt>
+  <dd><%= @service.to_address_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:from_address_id) %>:</strong></dt>
+  <dd><%= @service.from_address_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:vehicle_type_id) %>:</strong></dt>
+  <dd><%= @service.vehicle_type_id %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              inmediate_service_path, :class => 'btn btn-default'  %>

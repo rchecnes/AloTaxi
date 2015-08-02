@@ -3,6 +3,7 @@
     <tr>
       <th>Id</th>
       <th>Nombres</th>
+      <th>Apellidos</th>
       <th>licencia</th>
   
     </tr>
@@ -11,11 +12,14 @@
     <% @people.each do |person| %>
       <tr>
         <td><%= link_to person.id, person_path(person) %></td>
-        <td><%= person.first_name +' - '+ person.last_name%></td>
+        <td><%= person.first_name%></td>
+        <td><%= person.last_name%></td>
         <td><%= person.license %></td>
-        <td>
-           
-        </td>
+        <td><%=@service.id %></td> 
+        <td><%= link_to 'Add', 
+             assign_driver_path(:param1 => @service.id, :param2 => person.id),  
+             { 'class' => 'btn btn-info add_vehicle_to_service'}  
+             %>   
       </tr>
     <% end %>
   </tbody>

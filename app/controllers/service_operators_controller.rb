@@ -1,44 +1,47 @@
 class ServiceOperatorsController < ApplicationController
-  before_action :set_service, only: [ :show, :edit, :update, :destroy]
+  
   layout "administrator"
   # GET /services
   # GET /services.json
    def index
     @title = "Asignar Vehiculos a Servicios"
-    @services = Service.all
+   
+    @services = Service.where("phase='Evaluated'")
    end
   
   def list_driver
-    @drivers=Driver.all
+    @people=Person.all
+    @service = Service.find(params[:id])
   end
   
   def list_vehicle
     @vehicles = Vehicle.all
-    @service  = Service.find(params[:service_id])
+    @service = Service.find(params[:id])
   end
   
-  def update
-  end   
   
+ 
   def assign_vehicle
     
-   @id_vehicle=params[:vehicle_id]
-   @service=Service.find(params[:service_id])
-   @service.vehicle_id=@id_vehicle
-   @service.save()
-   
+   @service=Service.find(params[:param1])
+   @service.update_attributes(:vehicle_id => params[:param2])
   redirect_to service_operators_index_path
    
   end
   
-  private
-    # Use callbacks to share common setup or constraints between actions.
+  def assign_driver
+    
+   @service=Service.find(params[:param1])
+   @service.update_attributes(:driver_id => params[:param2])
+  redirect_to service_operators_index_path
    
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def service_params
-      params.require(:service).permit(:id_vehicle)
-    end
+  end
+  
+  def confirm_assigned
+     @service=Service.find(params[:param])
+     @service.update_attributes(:phase => "Asigned")
+     redirect_to service_operators_index_path 
+  end
 
 end  
 
