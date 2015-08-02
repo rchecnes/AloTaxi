@@ -47,7 +47,7 @@ class InmediateServicesController < ApplicationController
       
       #insert from address
       if params[:to_address_two_id] != ''
-        @from_address = Address.find(params[:to_address_two_id])
+        @to_address = Address.find(params[:to_address_two_id])
       else
         @to_address.description = params[:to_address_two]
         @to_address.state = 1
