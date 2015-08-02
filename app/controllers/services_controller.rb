@@ -20,6 +20,15 @@ class ServicesController < ApplicationController
         
     @favorites = Favorite.all
   end
+  
+  def calculate_price
+    
+    @price = params[:data]
+    
+    #respond_to do |format|
+    #  format.js 
+    #end
+  end
 
   # GET /services/1
   # GET /services/1.json

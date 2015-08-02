@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
 
   get "services/list_favorite/:address_type" => 'services#list_favorite', :as => :list_favorite
+  get "services/calculate_price/:data" => 'services#calculate_price', :as => :calculate_price
 
   get "service_operators/list_vehicle/:id" => 'service_operators#list_vehicle', :as => :list_vehicle
   get "service_operators/list_driver/:id" => 'service_operators#list_driver', :as => :list_driver
