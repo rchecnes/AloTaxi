@@ -24,17 +24,19 @@
         <td><%=service.driver_id %></td>
        
           <td>
-     <%= link_to 'Select Vehicle', 
-     list_vehicle_path(service.id),  
-     {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-vehicle', 'class' => 'btn btn-info'}  %>
-                     
-      <%= link_to 'Select Driver', 
-     list_driver_path(service.id),  
-     {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-driver', 'class' => 'btn btn-info'}  %>
-     
-     <%= link_to t('.confirm_assigned', :default => t("helpers.links.Asigned")),
-                      confirm_assigned_path(:param => service.id), :class => 'btn btn-info' %>
-          </td>
+            
+            
+             <%= link_to 'Select Vehicle', list_vehicle_path(service.id),  
+                 {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-vehicle', 'class' => 'btn btn-info'}  %>
+             <%= link_to 'Select Driver', list_driver_path(service.id),  
+                {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-driver', 'class' => 'btn btn-info'}  %>
+                
+             
+             <%= link_to t('.confirm_assigned', :default => t("helpers.links.Asigned")),
+             confirm_assigned_path(:param => service.id), :class => 'btn btn-info' %>
+            
+                   
+           </td>
       </tr>
     <% end %>
   </tbody>

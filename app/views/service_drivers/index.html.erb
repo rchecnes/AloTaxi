@@ -3,7 +3,9 @@
 <span class="information">R = Rejected  </span><br>
 <span class="information">S = Started ; </span>
 <span class="information">T = Terminated</span>
+<div>
 <br>
+</div>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -30,23 +32,28 @@
                       accept_service_path(:param => service.id), :class => 'btn btn-primary' %> 
             <%end %>
             
-            <% if service.phase=="Rejected" %>
-            <% else%>
-               <%= link_to t('.reject', :default => t("helpers.links.R")),
-                      reject_service_path(:param => service.id), :class => 'btn btn-primary' %>
-            <%end %>
-            
-            <% if service.phase=="Started" %>
+             <% if service.phase=="Started" %>
             <% else%>
                <%= link_to t('.start', :default => t("helpers.links.E")),
-                      start_service_path(:param => service.id), :class => 'btn btn-primary' %>
+                      start_service_path(:param => service.id), :class => 'btn btn-success' %>
             <%end %>
             
-              <% if service.phase=="Terminated" %>
+             <% if service.phase=="Terminated" %>
             <% else%>
                 <%= link_to t('.terminate', :default => t("helpers.links.T")),
                       terminate_service_path(:param => service.id), :class => 'btn btn-primary' %>
             <%end %>
+            
+            
+            <% if service.phase=="Rejected" %>
+            <% else%>
+               <%= link_to t('.reject', :default => t("helpers.links.R")),
+                      reject_service_path(:param => service.id), :class => 'btn btn-danger' %>
+            <%end %>
+            
+           
+            
+             
         
         
           </td>
