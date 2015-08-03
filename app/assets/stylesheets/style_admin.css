@@ -71,3 +71,10 @@ ul.navbar-nav{
 {font-size:18px;
     
 }
+
+@media(max-width:767px) {
+    #page-wrapper {
+        margin-top: 100px !important;
+    }
+
+}

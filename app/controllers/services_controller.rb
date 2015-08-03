@@ -1,13 +1,14 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   layout "administrator"
+  before_filter :authenticate_user!
   # GET /services
   # GET /services.json
   def index
     @title = "Taxi booking service"
     #@services = Service.all
     @service_type = ServiceType.find(2)
-    @services = Service.where(service_type:@service_type)
+    @services = Service.where(service_type:@service_type, customer:current_user.id)
     
   end
   
@@ -18,7 +19,7 @@ class ServicesController < ApplicationController
     #  format.js
     #end
         
-    @favorites = Favorite.all
+    @favorites = Favorite.where(user:current_user.id)
   end
   
   def calculate_price
@@ -67,15 +68,11 @@ class ServicesController < ApplicationController
     
     respond_to do |format|
       
-      #@service = Service.new
-      @from_address = Address.new
-      @to_address = Address.new
-      
       #insert from address
       if params[:from_address_two_id] != ""
         @from_address = Address.find(params[:from_address_two_id])
       else
-        
+        @from_address = Address.new
         @from_address.description = params[:from_address_two]
         @from_address.state = 1
         @from_address.reference = params[:from_reference_two]
@@ -87,6 +84,7 @@ class ServicesController < ApplicationController
       if params[:to_address_two_id] != ''
         @to_address = Address.find(params[:to_address_two_id])
       else
+        @to_address = Address.new
         @to_address.description = params[:to_address_two]
         @to_address.state = 1
         @to_address.reference = params[:to_reference_two]
@@ -106,7 +104,7 @@ class ServicesController < ApplicationController
       @service.phase = 'Evaluated'
       @service.from_address = @from_address
       @service.to_address = @to_address
-      @service.customer_id = 1
+      @service.customer_id = current_user.id
       #@service.save
       
       #insert favorite from address
@@ -116,19 +114,19 @@ class ServicesController < ApplicationController
       else
         @favorite_from_address = Favorite.new
         @favorite_from_address.name = "Sin nombre"
-        @favorite_from_address.person_id = 1
+        @favorite_from_address.user_id = current_user.id
         @favorite_from_address.address = @from_address
         @favorite_from_address.save
       end
       
       #insert favorite to address
-      @favorite_from_address = Favorite.find_by(address:@from_address);
+      @favorite_to_address = Favorite.find_by(address:@to_address);
       
       if @favorite_to_address
       else
         @favorite_to_address = Favorite.new
         @favorite_to_address.name = "Sin nombre"
-        @favorite_to_address.person_id = 1
+        @favorite_to_address.user_id = current_user.id
         @favorite_to_address.address = @to_address
         @favorite_to_address.save
       end

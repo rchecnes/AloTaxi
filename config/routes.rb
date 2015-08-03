@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
 
-  devise_for :users
+  devise_for :users, controllers: {registration: 'registration'}
+  
+  
   resources :inmediate_services
   get 'service_history/index'
 

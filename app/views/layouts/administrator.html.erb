@@ -56,6 +56,12 @@
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    
+                    
+                     
+                   
+                    
+                    
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
                             <a href="#">
@@ -135,7 +141,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.first_name+' '+current_user.last_name%> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -148,7 +154,18 @@
                         </li>
                         <li class="divider"></li>
                         <li>
+                            
+                            <!--<a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>-->
+                            
+                          <% if user_signed_in? %>
+                            
+                            <%= link_to(destroy_user_session_path, :method => :delete, :class => '') do %>
+                              <i class="fa fa-fw fa-power-off"> </i><span> Sign Out</span>
+                            <% end %>
+                          <% else %>
                             <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                          <% end %>
+                          
                         </li>
                     </ul>
                 </li>

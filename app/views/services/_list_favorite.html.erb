@@ -33,18 +33,33 @@
     var address_tring = $(this).attr('data').split('-');
     
     if(address_type == 'from'){
-      $("#from_address_two_id").val(address_tring[0]).attr("readonly","readonly");
-      $("#from_address_two").val(address_tring[1]).attr("readonly","readonly");
-      $("#from_district_two").val(address_tring[2]).attr("readonly","readonly");
-      $("#from_reference_two").val(address_tring[3]).attr("readonly","readonly");
+      if($("#to_address_two_id").val() != address_tring[0]){
+        
+        $("#from_address_two_id").val(address_tring[0]).attr("readonly","readonly");
+        $("#from_address_two").val(address_tring[1]).attr("readonly","readonly");
+        $("#from_district_two").val(address_tring[2]).attr("readonly","readonly");
+        $("#from_reference_two").val(address_tring[3]).attr("readonly","readonly");
+        
+        $(".close").click();
+      }else{
+        alert("Selected diferent address");
+      }
     }else{
-      $("#to_address_two_id").val(address_tring[0]).attr("readonly","readonly");
-      $("#to_address_two").val(address_tring[1]).attr("readonly","readonly");
-      $("#to_district_two").val(address_tring[2]).attr("readonly","readonly");
-      $("#to_reference_two").val(address_tring[3]).attr("readonly","readonly");
+      
+      if($("#from_address_two_id").val() != address_tring[0]){
+        
+        $("#to_address_two_id").val(address_tring[0]).attr("readonly","readonly");
+        $("#to_address_two").val(address_tring[1]).attr("readonly","readonly");
+        $("#to_district_two").val(address_tring[2]).attr("readonly","readonly");
+        $("#to_reference_two").val(address_tring[3]).attr("readonly","readonly");
+        
+        $(".close").click();
+      }else{
+        alert("Selected diferent address");
+      }
     }
     
-    $(".close").click();
+    
     
   })
     
