@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
 
   
-  resources :services_drivers
+  resources :service_drivers
   resources :service_operators
   resources :rates
   resources :favorites
