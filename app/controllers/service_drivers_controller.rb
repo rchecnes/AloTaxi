@@ -1,13 +1,12 @@
 class ServiceDriversController < ApplicationController
   before_action :set_service, only: [:accept, :reject,:start,:terminate]
  layout "administrator"
+ before_filter :authenticate_user!
   
   def index
 
-    @chofer=1
-   
     @title = "Assigned Services"
-    @services = Service.where(driver_id:@chofer)
+    @services = Service.where(driver_id:current_user.id)
 
   end
   

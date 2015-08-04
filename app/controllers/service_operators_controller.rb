@@ -1,6 +1,7 @@
 class ServiceOperatorsController < ApplicationController
   
   layout "administrator"
+  before_filter :authenticate_user!
   # GET /services
   # GET /services.json
    def index
