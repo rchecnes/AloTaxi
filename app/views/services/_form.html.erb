@@ -92,7 +92,12 @@
       <%= f.input :price %>
       <%= error_span(@service[:price]) %>
     </div>
-    
+    <div >
+        <label>&nbsp;</label><br>
+     
+          
+      
+    </div>                
   </div>
   
   <%= f.button :submit, :class => 'btn-primary' %>
@@ -111,6 +116,8 @@
       <button class="btn btn-primary">Save changes</button>-->
     </div>
   </div>
+  <div id="data_price"></div>
+  
   
   <script type="text/javascript">
     //$("#service_price").attr("readonly","readonly");
@@ -132,7 +139,6 @@
       $("#to_reference_two").val("").removeAttr("disabled");
       
     });
-    
   </script>           
 <% end %>
 

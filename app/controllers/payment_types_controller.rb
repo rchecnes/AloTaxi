@@ -1,7 +1,7 @@
 class PaymentTypesController < ApplicationController
   before_action :set_payment_type, only: [:show, :edit, :update, :destroy]
   layout "administrator"
-
+  before_filter :authenticate_user!
   # GET /payment_types
   # GET /payment_types.json
   def index

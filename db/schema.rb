@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731185648) do
+ActiveRecord::Schema.define(version: 20150804025838) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -37,10 +37,24 @@ ActiveRecord::Schema.define(version: 20150731185648) do
     t.integer  "address_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "user_id",    limit: 4
   end
 
   add_index "favorites", ["address_id"], name: "index_favorites_on_address_id", using: :btree
   add_index "favorites", ["person_id"], name: "index_favorites_on_person_id", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "menu_roles", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "icon",       limit: 255
+    t.string   "link",       limit: 255
+    t.integer  "role_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "position",   limit: 4
+  end
+
+  add_index "menu_roles", ["role_id"], name: "index_menu_roles_on_role_id", using: :btree
 
   create_table "payment_types", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -59,14 +73,18 @@ ActiveRecord::Schema.define(version: 20150731185648) do
   end
 
   create_table "rates", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.float    "price",       limit: 24
-    t.integer  "district_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",             limit: 255
+    t.float    "price",            limit: 24
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "from_district_id", limit: 4
+    t.integer  "to_district_id",   limit: 4
+    t.integer  "vehicle_type_id",  limit: 4
   end
 
-  add_index "rates", ["district_id"], name: "index_rates_on_district_id", using: :btree
+  add_index "rates", ["from_district_id"], name: "index_rates_on_from_district_id", using: :btree
+  add_index "rates", ["to_district_id"], name: "index_rates_on_to_district_id", using: :btree
+  add_index "rates", ["vehicle_type_id"], name: "index_rates_on_vehicle_type_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -119,6 +137,31 @@ ActiveRecord::Schema.define(version: 20150731185648) do
   add_index "services", ["vehicle_id"], name: "index_services_on_vehicle_id", using: :btree
   add_index "services", ["vehicle_type_id"], name: "index_services_on_vehicle_type_id", using: :btree
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "phone",                  limit: 255
+    t.string   "dni",                    limit: 255
+    t.string   "license",                limit: 255
+    t.integer  "role_id",                limit: 4
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
+
   create_table "vehicle_types", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
@@ -151,10 +194,13 @@ ActiveRecord::Schema.define(version: 20150731185648) do
   add_foreign_key "addresses", "districts"
   add_foreign_key "favorites", "addresses"
   add_foreign_key "favorites", "people"
-  add_foreign_key "rates", "districts"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "menu_roles", "roles"
+  add_foreign_key "rates", "vehicle_types"
   add_foreign_key "services", "payment_types"
   add_foreign_key "services", "service_types"
   add_foreign_key "services", "vehicle_types"
   add_foreign_key "services", "vehicles"
+  add_foreign_key "users", "roles"
   add_foreign_key "vehicles", "vehicle_types"
 end

@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   layout "administrator"
+  before_filter :authenticate_user!
   # GET /addresses
   # GET /addresses.json
   def index

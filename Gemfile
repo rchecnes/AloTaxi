@@ -45,6 +45,9 @@ group :development, :test do
   gem 'spring'
 end
 
+#Devise
+gem 'devise', '~> 3.5.1'
+
 #bootstrap
 gem 'therubyracer'
 gem 'less-rails'
@@ -55,4 +58,5 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-modal-rails'
 #Form management gem set
 gem 'simple_form'
+
 

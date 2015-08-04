@@ -3,9 +3,6 @@ class CreateRates < ActiveRecord::Migration
     create_table :rates do |t|
       t.string :name
       t.float :price
-      t.references :district, index: true, foreign_key: true
-      t.references :district, index: true, foreign_key: true
-
       t.timestamps null: false
     end
   end

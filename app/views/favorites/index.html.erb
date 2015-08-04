@@ -5,7 +5,7 @@
     <tr>
      <!-- <th><%= model_class.human_attribute_name(:id) %></th>-->
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:person) %></th>
+      <th><%= model_class.human_attribute_name(:user) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
      <!-- <th><%= model_class.human_attribute_name(:created_at) %></th>-->
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -16,7 +16,7 @@
       <tr>
      <!--   <td><%= link_to favorite.id, favorite_path(favorite) %></td>-->
         <td><%= favorite.name %></td>
-        <td><%= favorite.person.name %></td><!--linea-->
+        <td><%= favorite.user.first_name %></td><!--linea-->
         <td><%= favorite.address.name %></td><!--linea-->
      <!--   <td><%=l favorite.created_at %></td>-->
         <td>
