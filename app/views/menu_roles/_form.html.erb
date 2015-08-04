@@ -1,0 +1,16 @@
+<%= simple_form_for @menu_role, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@menu_role[:name]) %>
+  <%= f.input :icon %>
+  <%= error_span(@menu_role[:icon]) %>
+  <%= f.input :link %>
+  <%= error_span(@menu_role[:link]) %>
+  <%= f.association :role %>
+  <%= error_span(@menu_role[:role]) %>
+  <%= f.input :position %>
+  <%= error_span(@menu_role[:position]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                menu_roles_path, :class => 'btn btn-default' %>
+<% end %>

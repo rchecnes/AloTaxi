@@ -174,7 +174,18 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     
-                    <li>
+                    <% current_user.role.menu_roles.order(:position).each do |menu|%>
+                        <li>
+                          <%= link_to(menu.link, :class => '') do %>
+                              <% icon = 'fa fa-bar-chart-o' %>
+                              <% if menu.icon != ''%>
+                                 <% icon = menu.icon %>
+                              <% end %>
+                              <i class="<%= icon %>"> </i><span>&nbsp;<%= menu.name%></span>
+                          <% end %>
+                        </li>
+                    <% end %>
+                    <!--<li>
                       <%= link_to(payment_types_path, :class => '') do %>
                           <i class="fa fa-bar-chart-o"> </i><span> Payment type</span>
                       <% end %>
@@ -238,7 +249,7 @@
                         <%= link_to(service_drivers_index_path, :class => '') do %>
                             <i class="fa fa-bar-chart-o"> </i><span>Services address</span>
                         <% end %>
-                    </li>
+                    </li>-->
                     
                 </ul>
             </div>

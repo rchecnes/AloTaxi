@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :favorites
+  belongs_to :role
     
   has_many :customer_services ,  :foreign_key  =>  "customer_id" ,  :class_name  =>  "Service" 
   has_many :driver_services ,  :foreign_key  =>  "driver_id" ,  :class_name  =>  "Service"
@@ -14,8 +15,17 @@ class User < ActiveRecord::Base
   validates :dni, presence: true
   validates :license, presence: true
   
+  before_create :assign_default_role
+
+  
   def name
       first_name + " " + last_name
   end
+  
+  def assign_default_role
+    self.role = Role.find(1)
+  end
+  
+  
     
 end
