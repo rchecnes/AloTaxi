@@ -23,12 +23,12 @@ class ServicesController < ApplicationController
   end
   
   def calculate_price
-    
-    @price = params[:data]
-    
-    #respond_to do |format|
-    #  format.js 
-    #end
+ 
+   @from_district=params[:from_district]
+   @to_district=params[:to_district]
+   @vehicle_type=params[:vehi_type]
+   @price= Rate.where(from_district_id:@from_district ,to_district_id:@to_district ,vehicle_type_id:@vehicle_type )
+   
   end
 
   # GET /services/1

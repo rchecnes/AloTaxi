@@ -17,7 +17,12 @@ class ServiceDriversController < ApplicationController
    @service.phase='Accepted'
    @service.save()
     
-    redirect_to service_drivers_index_path
+    respond_to do |format|
+      format.html { redirect_to service_drivers_index_path, notice: 'Update service '+@service.id.to_s + 'phase Accepted .' }
+      format.json { head :no_content }
+     end
+    
+    
     
   end
   
@@ -27,7 +32,11 @@ class ServiceDriversController < ApplicationController
    @service.phase='Rejected'
    @service.save()
     
-    redirect_to service_drivers_index_path
+    respond_to do |format|
+      format.html { redirect_to service_drivers_index_path, notice: 'Update service'+@service.id.to_s+ ' phase Rejected .' }
+      format.json { head :no_content }
+     end
+    
   end 
     
   def start_service
@@ -35,7 +44,12 @@ class ServiceDriversController < ApplicationController
    @service=Service.find(@id_service)
    @service.phase='Started'
    @service.save()
-   redirect_to service_drivers_index_path
+   
+   respond_to do |format|
+      format.html { redirect_to service_drivers_index_path, notice: 'Update service ' +@service.id.to_s+ ' phase Started .' }
+      format.json { head :no_content }
+     end
+   
   end
   
   def terminate_service
@@ -43,7 +57,11 @@ class ServiceDriversController < ApplicationController
    @service=Service.find(@id_service)
    @service.phase='Terminated'
    @service.save()
-   redirect_to service_drivers_index_path
+   
+   respond_to do |format|
+      format.html { redirect_to service_drivers_index_path, notice: 'Update service '+@service.id.to_s+' phase Terminated .' }
+      format.json { head :no_content }
+   end
   end
 
 

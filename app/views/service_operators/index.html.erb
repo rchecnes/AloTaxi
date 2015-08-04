@@ -1,4 +1,23 @@
 <%- model_class = Service -%>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>
+      <span class="information" >V = Assigned Vehiculo</span>
+    </th>
+    <th>
+      <span class="information" >D = Assigned Driver</span>
+    </th>
+    <th>
+      <span class="information" >A = Confirmar Assigned</span>
+    </th>
+    
+   
+  </tr>
+</table>  
+
+
+
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -26,15 +45,16 @@
           <td>
             
             
-             <%= link_to 'Select Vehicle', list_vehicle_path(service.id),  
+             <%= link_to 'V', list_vehicle_path(service.id),  
                  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-vehicle', 'class' => 'btn btn-info'}  %>
-             <%= link_to 'Select Driver', list_driver_path(service.id),  
+             <%= link_to 'D', list_driver_path(service.id),  
                 {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-driver', 'class' => 'btn btn-info'}  %>
                 
-             
-             <%= link_to t('.confirm_assigned', :default => t("helpers.links.Asigned")),
-             confirm_assigned_path(:param => service.id), :class => 'btn btn-info' %>
-            
+             <% if service.vehicle_id.nil? and service.driver_id.nil?  %>
+             <% else%>
+             <%= link_to t('.confirm_assigned', :default => t("helpers.links.A")),
+             confirm_assigned_path(:param => service.id), :class => 'btn btn-success' %>
+             <% end %>
                    
            </td>
       </tr>
