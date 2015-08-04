@@ -1,2 +1,27 @@
-<h1>ServiceHistory#index</h1>
-<p>Find me in app/views/service_history/index.html.erb</p>
+<%- model_class = Service -%>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:"From Address") %></th>
+       <th><%= model_class.human_attribute_name(:"To Address") %></th>
+      <th><%= model_class.human_attribute_name(:Date) %></th>
+      <th><%= model_class.human_attribute_name(:State) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        
+        <td><%= service.id %></td>
+        <td><%= service.from_address.name %></td>
+          <td><%= service.to_address.name %> </td>
+        <td><%= service.created_at %></td>
+        
+        <td><%= service.phase %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
