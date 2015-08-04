@@ -1,6 +1,7 @@
 class ServiceOperatorsController < ApplicationController
   
   layout "administrator"
+  before_filter :authenticate_user!
   # GET /services
   # GET /services.json
    def index
@@ -25,10 +26,9 @@ class ServiceOperatorsController < ApplicationController
     
    @service=Service.find(params[:param1])
    @service.update_attributes(:vehicle_id => params[:param2])
-  redirect_to service_operators_index_path
-   
   end
-  
+   
+
   def assign_driver
     
    @service=Service.find(params[:param1])
@@ -40,7 +40,13 @@ class ServiceOperatorsController < ApplicationController
   def confirm_assigned
      @service=Service.find(params[:param])
      @service.update_attributes(:phase => "Asigned")
-     redirect_to service_operators_index_path 
+     
+     respond_to do |format|
+      format.html { redirect_to service_operators_index_path, notice: 'service '+@service.id.to_s + ' assigned  successfully .' }
+      format.json { head :no_content }
+     end
+     
+     
   end
 
 end  

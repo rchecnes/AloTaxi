@@ -23,12 +23,13 @@ class ServicesController < ApplicationController
   end
   
   def calculate_price
-    
-    @price = params[:data]
-    
-    #respond_to do |format|
-    #  format.js 
-    #end
+ 
+   #@from_district=params[:param1]
+   #@to_district=params[:param2]
+   #@vehicle_type=params[:param3]
+   #@price= Rate.where(from_district_id:@from_district ,to_district_id:@to_district ,vehicle_type_id:@vehicle_type )
+   @data =20
+  #redirect_to new_service_path
   end
 
   # GET /services/1
@@ -92,19 +93,25 @@ class ServicesController < ApplicationController
         @to_address.save
       end
         
+      #se calculara precio
+      
+      @rate= Rate.where(from_district_id:1  ,to_district_id:1 ,vehicle_type_id:1).first
+      
       #insert to services
+     
       @service = Service.new
       
       @service.scheduled_to = service_params[:scheduled_to]
       @service.requested_seats=service_params[:requested_seats]
       @service.vehicle_type_id = service_params[:vehicle_type_id]
       @service.payment_type_id = service_params[:payment_type_id]
-      @service.price = service_params[:price]
+      @service.price = @rate.price unless @rate.nil?
       @service.service_type_id = 2
       @service.phase = 'Evaluated'
       @service.from_address = @from_address
       @service.to_address = @to_address
       @service.customer_id = current_user.id
+      
       #@service.save
       
       #insert favorite from address
@@ -143,6 +150,9 @@ class ServicesController < ApplicationController
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
+    
+    
+    
     
   end
 

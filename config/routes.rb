@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get "service_drivers/start_service" => 'service_drivers#start_service', :as => :start_service
   get "service_drivers/terminate_service" => 'service_drivers#terminate_service', :as => :terminate_service
 
-
   get "services/list_favorite/:address_type" => 'services#list_favorite', :as => :list_favorite
   get "services/calculate_price/:data" => 'services#calculate_price', :as => :calculate_price
 
