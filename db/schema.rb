@@ -65,18 +65,12 @@ ActiveRecord::Schema.define(version: 20150803043829) do
     t.float    "price",            limit: 24
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.integer  "from_address_id",  limit: 4
-    t.integer  "to_address_id",    limit: 4
-    t.integer  "service_type_id",  limit: 4
     t.integer  "from_district_id", limit: 4
     t.integer  "to_district_id",   limit: 4
     t.integer  "vehicle_type_id",  limit: 4
   end
 
-  add_index "rates", ["from_address_id"], name: "index_rates_on_from_address_id", using: :btree
   add_index "rates", ["from_district_id"], name: "index_rates_on_from_district_id", using: :btree
-  add_index "rates", ["service_type_id"], name: "index_rates_on_service_type_id", using: :btree
-  add_index "rates", ["to_address_id"], name: "index_rates_on_to_address_id", using: :btree
   add_index "rates", ["to_district_id"], name: "index_rates_on_to_district_id", using: :btree
   add_index "rates", ["vehicle_type_id"], name: "index_rates_on_vehicle_type_id", using: :btree
 
