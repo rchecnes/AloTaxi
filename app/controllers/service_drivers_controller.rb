@@ -14,6 +14,7 @@ class ServiceDriversController < ApplicationController
    @id_service=params[:param]
    @service=Service.find(@id_service)
    @service.phase='Accepted'
+   @service.confirmed_at=Time.now
    @service.save()
     
     respond_to do |format|
@@ -29,6 +30,7 @@ class ServiceDriversController < ApplicationController
    @id_service=params[:param]
    @service=Service.find(@id_service)
    @service.phase='Rejected'
+   @service.cancelled_at=Time.now
    @service.save()
     
     respond_to do |format|
@@ -42,12 +44,13 @@ class ServiceDriversController < ApplicationController
    @id_service=params[:param]
    @service=Service.find(@id_service)
    @service.phase='Started'
+   @service.started_at=Time.now
    @service.save()
    
    respond_to do |format|
       format.html { redirect_to service_drivers_index_path, notice: 'Update service ' +@service.id.to_s+ ' phase Started .' }
       format.json { head :no_content }
-     end
+   end
    
   end
   
@@ -55,6 +58,7 @@ class ServiceDriversController < ApplicationController
    @id_service=params[:param]
    @service=Service.find(@id_service)
    @service.phase='Terminated'
+   @service.ended_at=Time.now
    @service.save()
    
    respond_to do |format|
