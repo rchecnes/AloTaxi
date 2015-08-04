@@ -26,6 +26,7 @@ class ServiceOperatorsController < ApplicationController
     
    @service=Service.find(params[:param1])
    @service.update_attributes(:vehicle_id => params[:param2])
+    redirect_to service_operators_index_path
   end
    
 
