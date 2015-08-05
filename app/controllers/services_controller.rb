@@ -94,11 +94,10 @@ class ServicesController < ApplicationController
       end
         
       #se calculara precio
-      
-      @rate= Rate.where(from_district_id:1  ,to_district_id:1 ,vehicle_type_id:1).first
+      @hevicle_type = VehicleType.find(service_params[:vehicle_type_id])
+      @rate= Rate.where(from_district:@from_address.district  ,to_district_id:@to_address.district ,vehicle_type:@hevicle_type).first
       
       #insert to services
-     
       @service = Service.new
       
       @service.scheduled_to = service_params[:scheduled_to]
@@ -106,7 +105,8 @@ class ServicesController < ApplicationController
       @service.vehicle_type_id = service_params[:vehicle_type_id]
       @service.payment_type_id = service_params[:payment_type_id]
       @service.price = @rate.price unless @rate.nil?
-      @service.service_type_id = 2
+      #@service.price = @rate.price
+      @service.service_type = ServiceType.find(2)
       @service.phase = 'Evaluated'
       @service.from_address = @from_address
       @service.to_address = @to_address

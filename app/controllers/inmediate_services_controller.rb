@@ -59,7 +59,8 @@ class InmediateServicesController < ApplicationController
       end
         
       #se calculara precio
-      @rate= Rate.where(from_district_id:1  ,to_district_id:1 ,vehicle_type_id:1).first
+      @hevicle_type = VehicleType.find(service_params[:vehicle_type_id])
+      @rate= Rate.where(from_district:@from_address.district  ,to_district_id:@to_address.district ,vehicle_type:@hevicle_type).first
         
       #insert to services
       @inmediate_service = Service.new
@@ -69,7 +70,7 @@ class InmediateServicesController < ApplicationController
       @inmediate_service.vehicle_type_id = service_params[:vehicle_type_id]
       @inmediate_service.payment_type_id = service_params[:payment_type_id]
       @inmediate_service.price = @rate.price unless @rate.nil?
-      @inmediate_service.service_type_id = 1
+      @inmediate_service.service_type = ServiceType.find(1)
       @inmediate_service.phase = 'Evaluated'
       @inmediate_service.from_address = @from_address
       @inmediate_service.to_address = @to_address

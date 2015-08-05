@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   #4:Cliente
   
   def assign_default_role
-    self.role = Role.find(1)
+    self.role = Role.find(4)
   end
   
   

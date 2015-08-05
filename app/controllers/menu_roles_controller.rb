@@ -5,21 +5,25 @@ class MenuRolesController < ApplicationController
   # GET /menu_roles
   # GET /menu_roles.json
   def index
+    @title = "Menu Roles";
     @menu_roles = MenuRole.all
   end
 
   # GET /menu_roles/1
   # GET /menu_roles/1.json
   def show
+    @title = "Menu Roles - Show";
   end
 
   # GET /menu_roles/new
   def new
+    @title = "Menu Roles - New";
     @menu_role = MenuRole.new
   end
 
   # GET /menu_roles/1/edit
   def edit
+    @title = "Menu Roles - Edit";
   end
 
   # POST /menu_roles
