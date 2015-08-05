@@ -18,11 +18,22 @@
         <td><%= inmediate_service.price %></td>
         <td><%= inmediate_service.phase %></td>
         <td>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <% if current_user.role.id != 4 %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       inmediate_service_path(inmediate_service),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
+          <% else %>
+            <% if inmediate_service.phase == 'Evaluated' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      inmediate_service_path(inmediate_service),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+            <% end %>
+          <% end %>
+          
         </td>
       </tr>
     <% end %>

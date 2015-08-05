@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804025838) do
+ActiveRecord::Schema.define(version: 20150804135551) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150804025838) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "position",   limit: 4
+    t.boolean  "status",     limit: 1
   end
 
   add_index "menu_roles", ["role_id"], name: "index_menu_roles_on_role_id", using: :btree

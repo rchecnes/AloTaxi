@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :dni, presence: true
-  validates :license, presence: true
   
   before_create :assign_default_role
 
@@ -22,8 +21,14 @@ class User < ActiveRecord::Base
       first_name + " " + last_name
   end
   
+  #Roles
+  #1:Admin
+  #2:Operario
+  #3:Taxista
+  #4:Cliente
+  
   def assign_default_role
-    self.role = Role.find(1)
+    self.role = Role.find(4)
   end
   
   
