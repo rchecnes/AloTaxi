@@ -4,10 +4,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:icon) %></th>
-      <th><%= model_class.human_attribute_name(:link) %></th>
       <th><%= model_class.human_attribute_name(:role) %></th>
-      <th><%= model_class.human_attribute_name(:position) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,10 +13,7 @@
       <tr>
         <td><%= link_to menu_role.id, menu_role_path(menu_role) %></td>
         <td><%= menu_role.name %></td>
-        <td><%= menu_role.icon %></td>
-        <td><%= menu_role.link %></td>
         <td><%= menu_role.role.name %></td>
-        <td><%= menu_role.position %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_menu_role_path(menu_role), :class => 'btn btn-default btn-xs' %>

@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin&nbsp;|&nbsp;<%= current_user.role.name%></a>
+                <a class="navbar-brand" href="#">SB Admin&nbsp;|&nbsp;<%= current_user.role.name%></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -164,7 +164,8 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <% current_user.role.menu_roles.order(:position).each do |menu|%>
-                        <li>
+                    <!--menu.link.delete(' ').downcase!-->
+                        <li id="list_<%= menu.link %>">
                           <%= link_to('/'+menu.link, :class => '') do %>
                               <% icon = 'fa fa-bar-chart-o' %>
                               <% if menu.icon != ''%>
@@ -192,5 +193,33 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        var rol_id = <%= current_user.role.id %>;
+        
+        if(localStorage.getItem("menu_activo") == undefined || localStorage.getItem("menu_activo") =='' || rol_id != localStorage.getItem("rol_usuario")){
+            if (rol_id == 1){
+                localStorage.setItem("menu_activo", "list_menu_roles");
+            }else if(rol_id == 2){
+                localStorage.setItem("menu_activo", "list_service_operators");
+            }else if(rol_id == 3){
+                localStorage.setItem("menu_activo", "list_service_drivers");
+            }else if(rol_id == 4){
+                localStorage.setItem("menu_activo", "list_favorites");
+            }
+            
+            localStorage.setItem("rol_usuario", rol_id);
+        }
+        
+    
+      $("ul.navbar-nav li").removeClass("active");
+      $("ul.navbar-nav li#"+localStorage.getItem("menu_activo")).addClass("active");
+    
+      $(".navbar-nav li").click(function(){
+        localStorage.setItem("menu_activo", $(this).attr('id'));
+        $(".navbar-nav li").removeClass("active");
+        $(this).addClass("active");
+      });
+
+  </script>
 </body>
 </html>
