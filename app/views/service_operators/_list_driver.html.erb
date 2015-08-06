@@ -9,15 +9,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @people.each do |person| %>
+    <% @user.each do |user| %>
       <tr>
-        <td><%= link_to person.id, person_path(person) %></td>
-        <td><%= person.first_name%></td>
-        <td><%= person.last_name%></td>
-        <td><%= person.license %></td>
+        <td><%= user.id %></td>
+        <td><%= user.first_name%></td>
+        <td><%= user.last_name%></td>
+        <td><%= user.license %></td>
         <td><%=@service.id %></td> 
         <td><%= link_to 'Add', 
-             assign_driver_path(:param1 => @service.id, :param2 => person.id),  
+             assign_driver_path(:param1 => @service.id, :param2 => user.id),  
              { 'class' => 'btn btn-info add_vehicle_to_service'}  
              %>   
       </tr>

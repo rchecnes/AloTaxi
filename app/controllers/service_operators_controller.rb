@@ -11,7 +11,7 @@ class ServiceOperatorsController < ApplicationController
    end
   
   def list_driver
-    @people=Person.all
+    @user    = User.where(role_id:3)
     @service = Service.find(params[:id])
   end
   
