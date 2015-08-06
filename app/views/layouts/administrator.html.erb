@@ -165,7 +165,8 @@
                 <ul class="nav navbar-nav side-nav">
                     <% current_user.role.menu_roles.order(:position).each do |menu|%>
                     <!--menu.link.delete(' ').downcase!-->
-                        <li id="list_<%= menu.link %>">
+                    
+                        <li id="list_<%= menu.link.gsub("/", "_") %>">
                           <%= link_to('/'+menu.link, :class => '') do %>
                               <% icon = 'fa fa-bar-chart-o' %>
                               <% if menu.icon != ''%>
@@ -204,7 +205,7 @@
             }else if(rol_id == 3){
                 localStorage.setItem("menu_activo", "list_service_drivers");
             }else if(rol_id == 4){
-                localStorage.setItem("menu_activo", "list_favorites");
+                localStorage.setItem("menu_activo", "list_price_list_index");
             }
             
             localStorage.setItem("rol_usuario", rol_id);

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'price_list/index'
+
   resources :menu_roles
   devise_for :users
   

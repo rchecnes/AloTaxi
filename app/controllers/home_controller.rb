@@ -22,7 +22,7 @@ class HomeController < ApplicationController
       end
       
       if current_user.role.id == 4
-        redirect_to controller: :favorites , action: :index
+        redirect_to controller: :price_list , action: :index
       end
     else
       redirect_to user_session_path
