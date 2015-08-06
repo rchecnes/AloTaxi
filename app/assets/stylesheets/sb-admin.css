@@ -225,3 +225,25 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+
+.prices{
+    border: 1px solid #DBA269;
+    background-color:#F9EED8;
+}
+
+.prices span{
+    font-size: 14px;
+    color:#E68A00;
+}
+
+
+.price-monto{
+    text-align:center;
+    color:red;
+    
+}
+
+.prices{
+    margin:2px;
+}

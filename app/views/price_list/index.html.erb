@@ -1,0 +1,41 @@
+<%- model_class = Rate -%>
+
+
+    <% @prices.each do |price| %>
+     
+        <div class="col-md-2 prices">
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Name:</span> <%= price.name%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span>From District:</span> <%= price.from_district.name%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span>To District:</span> <%= price.to_district.name%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Vehicle Type:</span> <%= price.vehicle_type.name%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 price-monto">
+                    <span>Price:</span>S/. <%= price.price%>
+                </div>
+            </div>
+        </div>
+        
+   
+    <% end %>
+  
+<div class="row">
+  
+  
+</div>
+

@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   
 
+  get 'price_list/index'
+
   resources :menu_roles
   devise_for :users
   
   
   resources :inmediate_services
   get 'service_history/index'
+  
+ 
 
   get 'service_operators/index'
   get 'service_drivers/index'
@@ -23,6 +27,7 @@ Rails.application.routes.draw do
   get "service_operators/assign_vehicle" => 'service_operators#assign_vehicle', :as => :assign_vehicle
   get "service_operators/assign_driver" => 'service_operators#assign_driver', :as => :assign_driver
   get "service_operators/confirm_assigned" => 'service_operators#confirm_assigned', :as => :confirm_assigned
+  
   
   
   

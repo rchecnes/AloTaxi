@@ -9,6 +9,10 @@ class RatesController < ApplicationController
     @rates = Rate.all
   end
 
+
+
+  
+
   # GET /rates/1
   # GET /rates/1.json
   def show

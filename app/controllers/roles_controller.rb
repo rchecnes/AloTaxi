@@ -8,6 +8,8 @@ class RolesController < ApplicationController
     @title="List of Roles"
     @roles = Role.all
   end
+  
+
 
   # GET /roles/1
   # GET /roles/1.json

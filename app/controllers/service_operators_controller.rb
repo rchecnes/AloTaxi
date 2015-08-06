@@ -11,12 +11,27 @@ class ServiceOperatorsController < ApplicationController
    end
   
   def list_driver
-    @people=Person.all
+   
+        #@user=User.joins('LEFT JOIN services ON services.driver_id = users.id')
+        #.select('users.*').where('users.role_id=3 and services.phase!="Started"')
+      @user=User.where("role_id=3 and 
+                         users.id not in (select distinct services.driver_id from  services
+                                          where phase !='Started' and 
+      (services.driver_id is not null and services.vehicle_id is not null) )") 
+    #@user=User.where("role_id=3")
     @service = Service.find(params[:id])
   end
   
   def list_vehicle
-    @vehicles = Vehicle.all
+    @vehicles =Vehicle.where("id not in 
+                            (select distinct vehicle_id from services 
+                             where phase!='Started' and 
+                                   vehicle_id is not null)")
+   
+   
+    
+    
+    
     @service = Service.find(params[:id])
   end
   
@@ -40,12 +55,34 @@ class ServiceOperatorsController < ApplicationController
   
   def confirm_assigned
      @service=Service.find(params[:param])
-     @service.update_attributes(:phase => "Asigned")
+     @message=""   
+      if (@service.phase=='Asigned')
+          @phase='Evaluation'
+          @message=" Delete Asigned successfully"
+          @service.update_attributes(:phase => @phase ,:vehicle_id => nil , :driver_id =>nil)
+       else
+          @phase='Asigned'
+          @message=" Asigned successfully"
+          @service.update_attributes(:phase => @phase)
+      end 
+     
      
      respond_to do |format|
-      format.html { redirect_to service_operators_index_path, notice: 'service '+@service.id.to_s + ' assigned  successfully .' }
+      format.html { redirect_to service_operators_index_path, notice: 'service '+@service.id.to_s  + @message }
       format.json { head :no_content }
      end
+     
+  def delete_assigned
+   @service=Service.find(params[:param])
+   @serivice.update_attributes(:phase => "evaluated",vehicle_id=>nil, driver_id=>nil )
+   
+   respond_to do |format|
+      format.html { redirect_to service_operators_index_path, notice: 'service '+@service.id.to_s + ' Confirm delete Assigned .' }
+      format.json { head :no_content }
+     end
+   
+  end 
+     
      
      
   end
