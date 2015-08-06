@@ -2,7 +2,8 @@
   
   <div class="row">
       <div class="col-md-3">
-          <%= f.input  :scheduled_to, as: :string, input_html: { class: "form-control datepicker", 'data-provide':'datepicker'} %>
+          <%= f.input  :scheduled_to, as: :string, input_html: { class: "datepicker", 'data-format':"yyyy/MM/dd hh:mm:ss"} %>
+          
           <%= error_span(@service[:scheduled_to]) %>
       </div>
       <div class="col-md-3">
@@ -12,11 +13,11 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-        <%= f.association :vehicle_type, class: "form-control" %>
+        <%= f.association :vehicle_type, :include_blank => false %>
         <%= error_span(@service[:vehicle_type]) %>
     </div>
     <div class="col-md-3">
-      <%= f.association :payment_type %>
+      <%= f.association :payment_type, :include_blank => false %>
       <%= error_span(@service[:payment_type]) %>
     </div>
   </div>
@@ -110,6 +111,12 @@
   
   
   <script type="text/javascript">
+  
+    $('.datepicker').datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true,
+      keyboardNavigation : true
+    });
     
     $("#from_address_clear").click(function(){
       

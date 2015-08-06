@@ -229,17 +229,14 @@ ul.alert-dropdown {
 
 .prices{
     border: 1px solid #DBA269;
-    background-color:#F5E3BE;
+    background-color:#F9EED8;
 }
 
-.prices p{
-    font-size: 16px;
-    color:#4D4D4D;
-}
-.prices p>b{
+.prices span{
     font-size: 14px;
-    color:#D17A5C;
+    color:#E68A00;
 }
+
 
 .price-monto{
     text-align:center;

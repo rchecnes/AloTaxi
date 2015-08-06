@@ -1,17 +1,17 @@
 <%= simple_form_for @inmediate_service, :url => inmediate_services_path, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="row">
       <div class="col-md-3">
-          <%= f.input :requested_seats, class: "form-control" %>
+          <%= f.input :requested_seats %>
           <%= error_span(@inmediate_service[:requested_seats]) %>
       </div>
   </div>
   <div class="row">
     <div class="col-md-3">
-        <%= f.association :vehicle_type, class: "form-control" %>
+        <%= f.association :vehicle_type, :include_blank => false %>
         <%= error_span(@inmediate_service[:vehicle_type]) %>
     </div>
     <div class="col-md-3">
-      <%= f.association :payment_type %>
+      <%= f.association :payment_type, :include_blank => false %>
       <%= error_span(@inmediate_service[:payment_type]) %>
     </div>
   </div>
@@ -103,6 +103,7 @@
   </div>
   
   <script type="text/javascript">
+  
     $("#from_address_clear").click(function(){
       
       $("#from_address_two_id").val("").removeAttr("readonly");

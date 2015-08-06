@@ -60,3 +60,4 @@ gem 'bootstrap-modal-rails'
 gem 'simple_form'
 
 
+
