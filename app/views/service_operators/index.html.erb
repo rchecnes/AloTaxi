@@ -43,23 +43,23 @@
         <td><%=service.driver_id  %></td>
        
           <td>
-            
+              
             
              <%= link_to 'V', list_vehicle_path(service.id),  
                  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-vehicle', 'class' => 'btn btn-info'}  %>
              <%= link_to 'D', list_driver_path(service.id),  
                 {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-driver', 'class' => 'btn btn-info'}  %>
-                
+         
              <% if ( service.vehicle_id.nil?) %>
              <% elsif   service.driver_id.nil?  %>
              <%else%>
-               <%= link_to t('.confirm_assigned', :default => t("helpers.links.A")),
+               <%= link_to t('.confirm_assigned', :default => t("helpers.links.A / D")),
                confirm_assigned_path(:param => service.id), :class => 'btn btn-success' %>
-            
-               
+ 
              <% end %>
-                   
-           </td>
+             
+          </td> 
+           
       </tr>
     <% end %>
   </tbody>
@@ -70,7 +70,7 @@
     <h3 id="myModalLabel">Lista de Vehiculos</h3>
   </div>
   <div class="modal-body" id="modal_content">
-    **here comes whatever you want to show!**
+    No vehicles available
   </div>
   <div class="modal-footer">
     <!--<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -84,7 +84,7 @@
     <h3 id="myModalLabel">Lista de Choferes</h3>
   </div>
   <div class="modal-body" id="modal_content_">
-    **here comes whatever you want to show!**
+    No drivers available
   </div>
   <div class="modal-footer">
     <!--<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
