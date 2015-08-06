@@ -11,12 +11,24 @@ class ServiceOperatorsController < ApplicationController
    end
   
   def list_driver
-    @user    = User.where(role_id:3)
+   
+        #@user=User.joins('LEFT JOIN services ON services.driver_id = users.id')
+        #.select('users.*').where('users.role_id=3 and services.phase!="Started"')
+      #@users=Users.where("role_id=3 and 
+      #                   users.id not in (select distinct services.driver_id from  services
+      #                                    where phase !='Started' and 
+      #(services.driver_id is not null and services.vehicle_id is not null) )") 
+    @user=Users.all
     @service = Service.find(params[:id])
   end
   
   def list_vehicle
-    @vehicles = Vehicle.all
+   # @vehicles =Vehicles.joins('LEFT JOIN services ON services.vehicle_id = vehicles.id')
+   #     .select('vehicles.*').where('services.phase!="Started"')
+   @vehicles =Vehicles.all 
+    
+    
+    
     @service = Service.find(params[:id])
   end
   
