@@ -1,12 +1,15 @@
 <%= simple_form_for @favorite, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= error_span(@favorite[:name]) %>
-  <%= f.association :user %><!--linea agregada-->
+  <%= f.association :user, :include_blank => false %><!--linea agregada-->
   <%= error_span(@favorite[:user]) %>
-  <%= f.association :address %><!--linea agregada-->
+  <%= f.association :address, :include_blank => false %><!--linea agregada-->
   <%= error_span(@favorite[:address]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 favorites_path, :class => 'btn btn-default' %>
+  <script>
+    $("#favorite_user_id").val('<%= current_user.id %>');
+  </script>
 <% end %>
