@@ -1,25 +1,20 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
+    
       <th>description</th>
       <th>seats_capacity</th>
       <th>plate</th>
-      <th>year</th>
-      <th>brand</th>
-      <th>soat</th>
     </tr>
   </thead>
   <tbody>
    <% @vehicles.each do |vehicle| %>
       <tr>
-        <td><%= vehicle.id %></td>
-        <td><%= vehicle.name %></td>
+       
         <td><%= vehicle.description %></td>
         <td><%= vehicle.seats_capacity %></td>
         <td><%= vehicle.plate %></td>
-        <td><%= vehicle.year %></td>
-        <td><%= vehicle.brand %></td>
+        
         <td><%=  @service.id %></td>
         <td><%= link_to 'Add', assign_vehicle_path(:param1 => @service.id, :param2 => vehicle.id),  { 'class' => 'btn btn-info add_vehicle_to_service'}  %>   
         </td>

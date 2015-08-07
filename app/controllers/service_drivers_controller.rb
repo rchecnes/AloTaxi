@@ -6,7 +6,8 @@ class ServiceDriversController < ApplicationController
   def index
 
     @title = "Assigned Services"
-    @services = Service.where(driver_id:current_user.id)
+   @user=current_user.id
+    @services = Service.where("driver_id=? and phase!=?",@user,"Rejected")
 
   end
   

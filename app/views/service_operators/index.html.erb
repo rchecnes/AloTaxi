@@ -44,12 +44,13 @@
        
           <td>
               
-            
+            <% if service.phase=='Evaluated' or  service.phase=='Rejected' %>
              <%= link_to 'V', list_vehicle_path(service.id),  
                  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-vehicle', 'class' => 'btn btn-info'}  %>
              <%= link_to 'D', list_driver_path(service.id),  
                 {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-driver', 'class' => 'btn btn-info'}  %>
          
+                     
              <% if ( service.vehicle_id.nil?) %>
              <% elsif   service.driver_id.nil?  %>
              <%else%>
@@ -57,9 +58,9 @@
                confirm_assigned_path(:param => service.id), :class => 'btn btn-success' %>
  
              <% end %>
-             
-          </td> 
-           
+            <%else%>
+          <%end%>  
+            
       </tr>
     <% end %>
   </tbody>
