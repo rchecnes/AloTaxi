@@ -11,28 +11,29 @@ class ServiceOperatorsController < ApplicationController
    end
   
   def list_driver
-   
+      @service = Service.find(params[:id])
         #@user=User.joins('LEFT JOIN services ON services.driver_id = users.id')
         #.select('users.*').where('users.role_id=3 and services.phase!="Started"')
       @user=User.where("role_id=3 and 
                          users.id not in (select distinct services.driver_id from  services
                                           where phase !='Started' and 
-      (services.driver_id is not null and services.vehicle_id is not null) )") 
+      (services.driver_id is not null and services.vehicle_id is not null)  )") 
     #@user=User.where("role_id=3")
-    @service = Service.find(params[:id])
+    
   end
   
   def list_vehicle
+    @service = Service.find(params[:id])
     @vehicles =Vehicle.where("id not in 
                             (select distinct vehicle_id from services 
                              where phase!='Started' and 
-                                   vehicle_id is not null)")
+                                   vehicle_id is not null) and seats_capacity=?",@service.requested_seats)
    
    
     
     
     
-    @service = Service.find(params[:id])
+    
   end
   
   
@@ -56,8 +57,8 @@ class ServiceOperatorsController < ApplicationController
   def confirm_assigned
      @service=Service.find(params[:param])
      @message=""   
-      if (@service.phase=='Asigned')
-          @phase='Evaluation'
+      if (@service.phase=='Asigned' or @service.phase=='Rejected' )
+          @phase='Evaluated'
           @message=" Delete Asigned successfully"
           @service.update_attributes(:phase => @phase ,:vehicle_id => nil , :driver_id =>nil)
        else
